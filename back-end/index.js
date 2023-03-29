@@ -2,6 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const mongoose = require('mongoose')
 const userRoute = require('./routes/user.route')
+const plywoodRoute = require('./routes/plywood.product.route')
 require('dotenv').config()
 const app = express()
 
@@ -13,7 +14,10 @@ app.use(cors())
 //  routes--------------------------
 
 // route-1
-app.use('/auth',userRoute)
+app.use('/users',userRoute)
+
+//route-2 
+app.use('/plywood',plywoodRoute)
 
 
 
