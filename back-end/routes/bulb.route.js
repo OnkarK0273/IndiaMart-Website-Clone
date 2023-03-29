@@ -19,6 +19,11 @@ bulbRouter.get("/", async (req, res) => {
   }
 });
 
+// sample
+bulbRouter.get("/sample", async (req, res) => {
+  res.send("for checking commit problem");
+});
+
 // Create
 bulbRouter.post("/add", async (req, res) => {
   try {
