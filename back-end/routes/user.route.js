@@ -5,18 +5,18 @@ require('dotenv').config()
 const jwt = require('jsonwebtoken')
 const userRoute = express.Router()
 
-userRoute.get('/', async (req, res) => {
+// userRoute.get('/', async (req, res) => {
 
-  try {
-    const users = await UserModel.find()
-    res.status(201).json({ "users": users })
+//   try {
+//     const users = await UserModel.find()
+//     res.status(201).json({ "users": users })
 
-  } catch (err) {
-    res.status(401).json({ "msg": "something went wrong" })
-  }
+//   } catch (err) {
+//     res.status(401).json({ "msg": "something went wrong" })
+//   }
 
 
-})
+// })
 
 userRoute.post("/register", async (req, res) => {
   const { email ,password} = req.body
@@ -52,7 +52,7 @@ userRoute.post('/login',async(req,res)=>{
       if(decoded){
         let token = jwt.sign({userID:user._id,role:user.role},process.env.SECRET_KEY,{expiresIn:"24hr"})
         // console.log(token)
-        res.status(200).send({token})
+        res.status(200).send({token,user})
          
       }else{
         res.status(400).send({err:"please check password or email!"})
