@@ -20,19 +20,6 @@ plywoodRoute.get("/",async(req,res)=>{
 
 })
 
-// get particular users products
-plywoodRoute.get("/myproducts",async(req,res)=>{
-           const {userID} = req.body
-
-    try {    
-            const plywoodProducts = await PlywoodProductModel.find({userID})
-   
-            res.status(200).send({'data':plywoodProducts})
-          
-    } catch (err) {
-        res.status(200).send({error:err.message})       
-    }
-})
 
 // post 
 
