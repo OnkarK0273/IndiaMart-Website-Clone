@@ -26,10 +26,18 @@ import {
     Stack,
     Text,
     useColorModeValue,
+    useDisclosure,
   } from '@chakra-ui/react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { deleteProductProduct } from '../redux/Admin/admin.action';
   
-  export default function AdminPlywoodCard({product}) {
-    const {title,brand,img1,Color,mob,price,quan,supplier,supplier_Addres} =product
+  export default function AdminPlywoodCard({product,open}) {
+    // const { isOpen, onOpen, onClose } = useDisclosure()
+    const {_id,title,brand,img1,Color,mob,price,quan,supplier,supplier_Addres} =product
+
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
     return (
       <Center py={6}>
         <Stack
@@ -110,7 +118,7 @@ import {
                 fontSize={'sm'}
                 rounded={'full'}
                 bg= 'gray.200'
-                
+                onClick={()=>{open();navigate(`/addProduct/${_id}`)}}
                 >
                
                Edit
@@ -129,7 +137,9 @@ import {
                 }}
                 _focus={{
                   bg: 'red.500',
-                }}>
+                }} 
+                onClick={()=>dispatch(deleteProductProduct(_id))}
+                >
                 Delete
               </Button>
             </Stack>
