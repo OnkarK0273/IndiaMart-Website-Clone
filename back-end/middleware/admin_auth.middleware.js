@@ -1,24 +1,23 @@
-const jwt = require("jsonwebtoken");
-require("dotenv").config();
-const admin_auth = (req, res, next) => {
-  const { token } = req.headers;
-  const decodedToken = jwt.verify(token, process.env.SECRET_KEY);
+const jwt =require('jsonwebtoken')
+require('dotenv').config()
+const admin_auth = (req,res,next)=>{
 
-  // console.log(decodedToken)
-  try {
-    const decodedToken = jwt.verify(token, process.env.SECRET_KEY);
-    if (decodedToken) {
-      if (decodedToken.role === "admin") {
-        next();
-      } else if (decodedToken.role === "super_admin") {
-        next();
-      }
-    } else {
-      res.status(400).send({ error: "unautharised !" });
+    const {token} = req.headers
+       try {
+        const decodedToken = jwt.verify(token,process.env.SECRET_KEY)
+        if(decodedToken){
+            if(decodedToken.role==="admin"){
+                next()
+            }else if(decodedToken.role==="super_admin"){
+                next()
+            }
+        }else{
+            res.status(400).send({"error":"unautharised !"})
+        }
+    } catch (err) {
+        res.status(400).send({"error":err.message})
+
     }
-  } catch (err) {
-    res.status(400).send({ error: err.message });
-  }
-};
+}
 
-module.exports = admin_auth;
+module.exports=admin_auth
