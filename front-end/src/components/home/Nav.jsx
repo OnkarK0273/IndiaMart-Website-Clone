@@ -38,7 +38,8 @@ import {
   PopoverHeader,
   PopoverBody
 } from '@chakra-ui/react';
-import { MdSell,MdOutlineMessage } from 'react-icons/md'
+import { MdSell,MdOutlineMessage,MdHome } from 'react-icons/md'
+import { useNavigate } from 'react-router-dom'
 import { HamburgerIcon, CloseIcon, ChevronDownIcon, Search2Icon } from '@chakra-ui/icons';
 import {Link as Navlink} from 'react-router-dom'
 import React, { useState } from 'react';
@@ -48,12 +49,19 @@ import React, { useState } from 'react';
 
 export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [flag,setFlag] = useState(true)
+  const [flag,setFlag] = useState(false)
+  const navigate = useNavigate()
   const btnRef = React.useRef()
-    console.log(isOpen)
+    
+  const handleSide = (val)=>{
+    navigate(val)
+    onClose()
+  }
+  
+
   return (
     <>
-      <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
+      <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4} position='sticky' top={'0'} zIndex='2' >
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
           <IconButton
             size={'md'}
@@ -66,7 +74,7 @@ export default function Navbar() {
 
           <HStack  alignItems={'center'} display={flag?{ base: 'none', md: 'flex' }:"flex"}    >
             <Box>
-                <Image src='/images/2.png' w='60px' objectFit={'cover'} />
+                <Image src='/images/2.png' w='60px' objectFit={'cover'} onClick={()=>{navigate('/')}}  />
             </Box>
                 <Heading color={'red.500'} size={{ md: 'md', lg: 'lg' }} >MartMate</Heading>
            
@@ -153,7 +161,7 @@ export default function Navbar() {
               <MenuList>
                 <MenuItem >
                   {
-                    !flag && <Button colorScheme='teal' onClick={()=>{setFlag(true)}}  >Login</Button>
+                    !flag && <Navlink to='/login' ><Button colorScheme='teal'>Login</Button></Navlink> 
                   }
                 </MenuItem>
                 <MenuItem>
@@ -193,22 +201,24 @@ export default function Navbar() {
             <hr />
             <DrawerBody >
                 <VStack alignItems={'flex-start'} >
-                    <Button  size='lg' p='10px' _hover={{ color:'teal' }} >
+                    <Button w='100%'  size='lg' p='10px' columnGap={'10px'} onClick={()=>{handleSide('/')}}  _hover={{ color:'teal' }} >
+                        <Icon   as={MdHome} boxSize={5}  /> 
+                        <Text  fontWeight={'bold'}>Home</Text>
+                    </Button>
+                    <Button w='100%' size='lg' p='10px' columnGap={'10px'} onClick={()=>{handleSide('/')}} _hover={{ color:'teal' }} >
                         <Icon   as={MdSell} boxSize={5}  /> 
                         <Text  fontWeight={'bold'}>sell</Text>
                     </Button>
-                    <Button  size='lg' p='10px' _hover={{ color:'teal' }} >
+                    <Button  w='100%'  size='lg' p='10px' columnGap={'10px'} onClick={()=>{handleSide('/')}} _hover={{ color:'teal' }} >
                         <Icon  as={''} boxSize={5} /> 
                         <Text  fontWeight={'bold'}>help</Text>
                     </Button>
-                    <Button  size='lg' p='10px' _hover={{ color:'teal' }}  >
+                    <Button  w='100%' size='lg' p='10px' columnGap={'10px'} onClick={()=>{handleSide('/')}} _hover={{ color:'teal' }}  >
                         <Icon   as={MdOutlineMessage} boxSize={5} /> 
                         <Text  fontWeight={'bold'}>masaage</Text>
                     </Button>
                 </VStack>  
-            </DrawerBody>
-  
-            
+            </DrawerBody>          
           </DrawerContent>
         </Drawer>
         ) : null}
