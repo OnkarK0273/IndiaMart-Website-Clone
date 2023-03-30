@@ -41,9 +41,9 @@ userRoute.post("/register", async (req, res) => {
 
 userRoute.post('/login',async(req,res)=>{
   const {email,password} = req.body
-
   try {
     const user = await UserModel.findOne({email})
+    console.log(user)
 
     if (!user) {
       res.status(400).send({ "error": "user does not exists" })

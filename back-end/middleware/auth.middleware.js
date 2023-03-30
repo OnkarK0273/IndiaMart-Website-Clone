@@ -8,7 +8,8 @@ const auth= (req,res,next)=>{
         const decodedToken = jwt.verify(token,process.env.SECRET_KEY)
         if(decodedToken){
             // console.log("role",decodedToken.role)
-             if(decodedToken.role==="admin" || "super_admin"){
+            
+             if(decodedToken.role==="admin" || decodedToken.role==="super_admin"){
                 next()
              }else if(decodedToken.role ==="user"){
                 req.body.userID=decodedToken.userID

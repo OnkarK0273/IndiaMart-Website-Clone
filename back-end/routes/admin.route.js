@@ -9,6 +9,7 @@ const bcrypt =require("bcrypt")
 const jwt = require('jsonwebtoken')
 const admin_auth = require('../middleware/admin_auth.middleware')
 const UserModel = require('../model/user.model')
+const super_admin_auth = require('../middleware/superAdmin.middle')
 const adminRoute = express.Router()
 
 adminRoute.get('/usersdata',admin_auth,async(req,res)=>{
@@ -33,7 +34,7 @@ adminRoute.get('/admindata',admin_auth,async(req,res)=>{
         
 })
 
-adminRoute.post('/addadmin',async(req,res)=>{
+adminRoute.post('/addadmin',super_admin_auth,async(req,res)=>{
     const {email,password} = req.body
     try {
         const adminData =await UserModel.find({email})
@@ -52,7 +53,7 @@ adminRoute.post('/addadmin',async(req,res)=>{
     }
 })
 
-adminRoute.patch('/updateAdmin/:id',async(req,res)=>{
+adminRoute.patch('/updateAdmin/:id',super_admin_auth,async(req,res)=>{
 
     const {id} = req.params
     try {
@@ -66,7 +67,7 @@ adminRoute.patch('/updateAdmin/:id',async(req,res)=>{
 })
 
 
-adminRoute.delete('/deleteAdmin/:id',async(req,res)=>{
+adminRoute.delete('/deleteAdmin/:id',super_admin_auth,async(req,res)=>{
       
      const {id} = req.params
 
