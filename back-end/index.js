@@ -3,6 +3,7 @@ const cors = require('cors')
 const mongoose = require('mongoose')
 const userRoute = require('./routes/user.route')
 const plywoodRoute = require('./routes/plywood.product.route')
+const adminRoute = require('./routes/admin.route')
 require('dotenv').config()
 const app = express()
 
@@ -18,6 +19,9 @@ app.use('/users',userRoute)
 
 //route-2 
 app.use('/plywood',plywoodRoute)
+
+// route-
+app.use('/admin',adminRoute)
 
 
 
