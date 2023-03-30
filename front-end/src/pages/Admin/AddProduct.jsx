@@ -1,6 +1,5 @@
 import {
   Box,
-  Button,
   Flex,
   Tab,
   TabList,
@@ -8,9 +7,8 @@ import {
   TabPanels,
   Tabs,
 } from "@chakra-ui/react";
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getPlywoodProducts } from "../../redux/Admin/admin.action";
+import React from "react";
+
 import AdminMedicinesPanel from "./AdminMedicinesPanel";
 import AdminPlywoodPanel from "./AdminPlywoodPanel";
 

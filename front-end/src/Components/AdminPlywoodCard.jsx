@@ -16,17 +16,14 @@
 // export default AdminPlywoodCard
 
 import {
-    Badge,
     Button,
     Center,
     Flex,
     Heading,
     Image,
-    Link,
     Stack,
     Text,
-    useColorModeValue,
-    useDisclosure,
+    useColorModeValue
   } from '@chakra-ui/react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -34,7 +31,7 @@ import { deleteProductProduct } from '../redux/Admin/admin.action';
   
   export default function AdminPlywoodCard({product,open}) {
     // const { isOpen, onOpen, onClose } = useDisclosure()
-    const {_id,title,brand,img1,Color,mob,price,quan,supplier,supplier_Addres} =product
+    const {_id,title,brand,img1,mob,price,supplier,supplier_Addres} =product
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
