@@ -19,10 +19,11 @@ const bulbSchema = mongoose.Schema(
     supplier: { type: String, required: true },
     supplier_Addres: { type: String, required: true },
     cl: { type: String, required: true },
-    mobile: { type: String, required: true },
+    mob: { type: String, required: true },
     contact: { type: String, required: true },
     img1: { type: String, required: true },
-    img2: { type: String, required: true },
+    img2: { type: String },
+    userID: { type: String },
   },
   {
     versionKey: false,
