@@ -1,32 +1,34 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
-const plywoodProductSchema = mongoose.Schema({
+const plywoodProductSchema = mongoose.Schema(
+  {
     title: { type: String, required: true },
     price: { type: Number, required: true },
     quan: { type: String, required: true },
     size: { type: String, required: true },
     Color: { type: String, required: true },
     Wood_Type: { type: String },
-    UsageApplication: { type: String},
-    Thickness: { type: Number},
+    UsageApplication: { type: String },
+    Thickness: { type: Number },
     Brand: { type: String, required: true },
     supplier: { type: String, required: true },
     supplier_Addres: { type: String, required: true },
     mob: { type: Number },
     contact: { type: String, required: true },
-    userID:{type:String},
-    img1: { type: String  },
-    img2: { type: String  },
-    img3: { type: String  },
-    img4: { type: String  }
+    userID: { type: String },
+    img1: { type: String },
+    img2: { type: String },
+    img3: { type: String },
+    img4: { type: String },
+  },
+  {
+    versionKey: false,
+  }
+);
 
-},{
-    versionKey:false
-})
+const PlywoodProductModel = mongoose.model("plywood", plywoodProductSchema);
 
-const PlywoodProductModel = mongoose.model('plywood',plywoodProductSchema)
-
-module.exports=PlywoodProductModel
+module.exports = PlywoodProductModel;
 
 /**
  * 
