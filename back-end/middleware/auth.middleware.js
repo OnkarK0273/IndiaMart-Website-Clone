@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken')
+require('dotenv').config()
 const auth= (req,res,next)=>{
 
     const {token} = req.headers
@@ -7,7 +8,7 @@ const auth= (req,res,next)=>{
         const decodedToken = jwt.verify(token,process.env.SECRET_KEY)
         if(decodedToken){
             // console.log("role",decodedToken.role)
-             if(decodedToken.role==="admin"){
+             if(decodedToken.role==="admin" || "super_admin"){
                 next()
              }else if(decodedToken.role ==="user"){
                 req.body.userID=decodedToken.userID
