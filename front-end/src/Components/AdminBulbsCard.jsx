@@ -24,15 +24,25 @@ import {
   Stack,
   Text,
   useColorModeValue,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { deleteProductProduct } from "../redux/Admin/admin.action";
 
-export default function AdminPlywoodCard({ product, open }) {
-  // const { isOpen, onOpen, onClose } = useDisclosure()
-  const { _id, title, brand, img1, mob, price, supplier, supplier_Addres } =
-    product;
+export default function AdminBulbsCard({ product, open }) {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const {
+    _id,
+    title,
+    price,
+    Wattage,
+    Brand,
+    contact,
+    img1,
+    supplier,
+    supplier_Addres,
+  } = product;
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -64,7 +74,7 @@ export default function AdminPlywoodCard({ product, open }) {
             {title}
           </Heading>
           <Text fontWeight={600} color={"gray.500"} size="sm" mb={4}>
-            {brand}
+            {Brand}
           </Text>
 
           <Stack align={"left"} justify={"left"} direction={"row"} mt={6}>
@@ -74,7 +84,7 @@ export default function AdminPlywoodCard({ product, open }) {
               px={3}
               noOfLines="1"
             >
-              Mob: {mob}
+              Mob: {contact}
             </Text>
             <Text
               textAlign={"left"}

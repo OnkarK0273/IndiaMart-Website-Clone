@@ -8,6 +8,7 @@ import {
 } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
 import { postProduct } from "../../redux/Admin/admin.action";
+
 const AddNewProduct = () => {
   const dispatch = useDispatch();
   const [product, setProduct] = useState({
