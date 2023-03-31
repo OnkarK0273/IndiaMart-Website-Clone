@@ -4,7 +4,6 @@ import {
   Flex,
   Avatar,
   HStack,
-  Link,
   IconButton,
   Button,
   Menu,
@@ -14,7 +13,6 @@ import {
   MenuDivider,
   useDisclosure,
   useColorModeValue,
-  Stack,
   Drawer,
   DrawerOverlay,
   DrawerContent,
@@ -22,14 +20,11 @@ import {
   DrawerHeader,
   DrawerBody,
   Input,
-  DrawerFooter,
   Text,
   Icon,
   Image,
   VStack,
   InputGroup,
-  InputLeftElement,
-  InputRightElement,
   Heading,
   PopoverTrigger,
   Popover,
@@ -38,6 +33,7 @@ import {
   PopoverHeader,
   PopoverBody
 } from '@chakra-ui/react';
+import { useDispatch, useSelector } from 'react-redux';
 import { MdSell,MdOutlineMessage,MdHome } from 'react-icons/md'
 import { useNavigate } from 'react-router-dom'
 import { HamburgerIcon, CloseIcon, ChevronDownIcon, Search2Icon } from '@chakra-ui/icons';
@@ -45,17 +41,23 @@ import {Link as Navlink} from 'react-router-dom'
 import React, { useState } from 'react';
 
 
-
-
 export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [flag,setFlag] = useState(false)
+  const {error,isLogin} = useSelector((store)=>store.authReducer)
+  const dispatch = useDispatch()
   const navigate = useNavigate()
   const btnRef = React.useRef()
     
   const handleSide = (val)=>{
     navigate(val)
     onClose()
+  }
+
+  const handleLogout=()=>{
+
+    
+    
   }
   
 
@@ -120,23 +122,7 @@ export default function Navbar() {
                 </Button>
                 <Button flexDirection={'column'} size='lg' p='10px'  >
                      <Icon  as={''} boxSize={5} /> 
-                     <Popover trigger={'hover'}  >
-                        <PopoverTrigger>
-                        <Text  fontWeight={'bold'} _hover={{ color:'teal' }} >Help</Text>
-                        </PopoverTrigger>
-                        <PopoverContent>
-                        <PopoverArrow />
-                        <PopoverHeader>Find answers to your queries</PopoverHeader>
-                        <PopoverBody textAlign={'left'} >  
-                        <Box>for Buying</Box>
-                        <Box>Share Your Feedback</Box>
-                        <Box>Raise a Complaint</Box>
-                        <Box>Email: customercare@martmate.com</Box>
-                        <Box>Call us : 85745666</Box>
-                        <Box>Chat With us</Box>
-                        </PopoverBody>
-                    </PopoverContent>
-                    </Popover>
+                     <Text  fontWeight={'bold'} _hover={{ color:'teal' }} >Help</Text>
                 </Button>
                 <Button flexDirection={'column'} size='lg' p='10px' _hover={{ color:'teal' }}  >
                      <Icon   as={MdOutlineMessage} boxSize={5} /> 
@@ -221,7 +207,7 @@ export default function Navbar() {
             </DrawerBody>          
           </DrawerContent>
         </Drawer>
-        ) : null}
+        ) : false}
       </Box>
 
      

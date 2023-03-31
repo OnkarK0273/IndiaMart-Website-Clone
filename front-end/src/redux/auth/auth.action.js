@@ -10,21 +10,22 @@ export const Signin =(payload)=>async (dispatch)=>{
 
     }catch(err){
          console.log(err)
-         dispatch({type:types.ERROR,payload:err.response.data.msg})
+         dispatch({type:types.ERROR,payload:err.response.data.error})
          
     }
 
 }
 
-export const Login =(payload)=>async (dispatch)=>{
+export const Log =(payload)=>async (dispatch)=>{
 
     try{
         const res = await loginAPI(payload)
+        console.log(res)
         dispatch({type:types.LOGIN,payload:res})
 
     }catch(err){
         console.log(err)
-        dispatch({type:types.ERROR,payload:err.response.data.msg})
+        dispatch({type:types.ERROR,payload:err.response.data.error})
     }
 
 }

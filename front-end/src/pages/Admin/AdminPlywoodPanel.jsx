@@ -2,7 +2,7 @@ import { Box, Button, Flex, Modal, ModalBody, ModalCloseButton, ModalContent, Mo
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
-import AdminPlywoodCard from '../../Components/AdminPlywoodCard'
+import AdminPlywoodCard from '../../components/AdminPlywoodCard'
 import { getPlywoodProducts, postProduct, updatePlywoodProducts } from '../../redux/Admin/admin.action'
 import PlyUpdate from './AddNewProduct'
 import { Input } from "@chakra-ui/react";

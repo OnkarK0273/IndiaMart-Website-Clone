@@ -11,13 +11,13 @@ function App() {
 
     <div className='App' >
       {
-        location.pathname === '/adminDashboard' || location.pathname === '/addProduct' ? false :  <Navbar/>
+        location.pathname === '/adminDashboard' || location.pathname === '/addProduct' ||  location.pathname === '/addNewProduct' ||  location.pathname === '/addProduct/:id' ? false :  <Navbar/>
       }
   
       <AllRoutes/>
 
       {
-        location.pathname === '/adminDashboard' || location.pathname === '/addProduct' ? false :  <Footer/>
+        location.pathname === '/adminDashboard' || location.pathname === '/addProduct' ||  location.pathname === '/addNewProduct' ||  location.pathname === '/addProduct/:id' ? false :  <Footer/>
       }
       
     </div>
