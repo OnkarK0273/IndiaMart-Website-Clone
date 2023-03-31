@@ -1,7 +1,7 @@
 import { Heading } from '@chakra-ui/react';
 import React from 'react'
 import { Route, Routes } from "react-router-dom";
-import AdminNavbar from '../Components/AdminNavbar';
+import AdminNavbar from '../components/AdminNavbar'
 import AddProduct from '../pages/Admin/AddProduct';
 import Dashboard from '../pages/Admin/Dashboard';
 import Home from '../pages/Home';
