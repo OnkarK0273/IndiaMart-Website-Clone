@@ -11,3 +11,36 @@ export const getPlywoodAPI = async () => {
     })
     return res.data.data
 }
+
+export  const updateProductAPI = async(prod)=>{
+    // console.log(prod)
+    let res = await axios.patch(`${baseURL}/plywood/update/${prod._id}`,prod,{
+        headers: {
+            'Content-Type': 'application/json',
+            'token': localStorage.getItem('token')
+        }
+    })
+    return res.data
+
+}
+
+export const deleteProductAPI =async(id)=>{
+    let res = await axios.delete(`${baseURL}/plywood/delete/${id}`,{
+        headers: {
+            'Content-Type': 'application/json',
+            'token': localStorage.getItem('token')
+        }
+    })
+    return res.data
+
+}
+
+export const postProductAPI = async(prod)=>{
+    let res = await axios.post(`${baseURL}/plywood/add/`,prod,{
+        headers: {
+            'Content-Type': 'application/json',
+            'token': localStorage.getItem('token')
+        }
+    })
+    return res.data
+}

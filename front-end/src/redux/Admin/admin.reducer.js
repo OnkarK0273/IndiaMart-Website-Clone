@@ -26,6 +26,24 @@ export const reducer = (state = initalState, { type,payload }) => {
                 isError:false,
                 plyWoodProducts:payload
             }
+        case types.DELETE_PRODUCT_SUCCESS:
+            return {
+                ...state,
+                isLoading:false,
+                isError:false,
+            }
+        case types.POST_PRODUCT_SUCCESS:
+            return {
+                ...state,
+                isLoading:false,
+                isError:false,
+            }
+        case types.UPDATE_PRODUCT_SUCCESS:
+            return {
+                ...state,
+                isLoading:false,
+                isError:false,   
+            }
 
         case types.GET_PRODUCT_ERROR:
             return {

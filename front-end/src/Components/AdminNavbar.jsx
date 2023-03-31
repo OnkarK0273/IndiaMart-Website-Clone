@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+
 import {
   IconButton,
   Box,
@@ -11,20 +11,13 @@ import {
   DrawerContent,
   Text,
   useDisclosure,
-  BoxProps,
-  FlexProps,
 } from '@chakra-ui/react';
 import {
   FiHome,
-  FiTrendingUp,
-  FiCompass,
-  FiStar,
   FiSettings,
   FiMenu,
 } from 'react-icons/fi';
 import {Link as RouterLink} from 'react-router-dom'
-import { IconType } from 'react-icons';
-import { ReactText } from 'react';
 import { GrUserAdmin } from "react-icons/gr"
 import { RiProductHuntLine } from "react-icons/ri"
 import { FiUsers } from "react-icons/fi"
