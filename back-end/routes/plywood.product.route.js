@@ -34,6 +34,22 @@ plywoodRoute.get("/", async (req, res) => {
 
 // post
 
+plywoodRoute.get("/:id",async(req,res)=>{
+    const {id} = req.params
+// console.log(id)
+    try {
+        
+        const plywoodProducts = await PlywoodProductModel.findOne({_id:id})
+
+        res.status(200).send({'data':plywoodProducts})
+        
+    } catch (err) {
+        res.status(200).send({error:err.message})
+        
+    }
+
+})
+
 plywoodRoute.post("/add", auth, async (req, res) => {
   try {
     const product = new PlywoodProductModel(req.body);
