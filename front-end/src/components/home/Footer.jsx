@@ -39,7 +39,7 @@ export default function Footer() {
         <Box>
             <Grid templateColumns={{base:'repeat(2, 1fr)',sm:'repeat(3, 1fr)',md:'repeat(5, 1fr)'}}  gap={3}>
                 {
-                    footerData.map((el)=>(<Footeritems{...el}/>))
+                    footerData.map((el,i)=>(<Footeritems key={i} {...el}/>))
                 }
             </Grid>
         </Box>
