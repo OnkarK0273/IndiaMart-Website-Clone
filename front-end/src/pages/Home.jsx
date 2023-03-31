@@ -1,31 +1,29 @@
-import { Box } from '@chakra-ui/react'
-import React, { useState } from 'react'
-import HomeBottom from '../components/home/HomeBottom'
-import HomeCatgory from '../components/home/HomeCatgory'
-import HomeSections from '../components/home/HomeSections'
-import HomeTop from '../components/home/HomeTop'
+import { Box } from "@chakra-ui/react";
+import React, { useState } from "react";
+import HomeBottom from "../Components/home/HomeBottom";
+import HomeCatgory from "../Components/home/HomeCatgory";
+import HomeSections from "../Components/home/HomeSections";
+import HomeTop from "../Components/home/HomeTop";
 
 export default function Home() {
-  
   return (
     <div>
       {/* banner */}
       <Box>
-        <HomeTop/>
+        <HomeTop />
       </Box>
       {/* Catagory nav-bar */}
       <Box>
-        <HomeCatgory/>
+        <HomeCatgory />
       </Box>
       {/* Product Gridr */}
       <Box>
-        <HomeSections/>
+        <HomeSections />
       </Box>
       {/* Bottom posters - features */}
       <Box>
-        <HomeBottom/>
+        <HomeBottom />
       </Box>
-
     </div>
-  )
+  );
 }
