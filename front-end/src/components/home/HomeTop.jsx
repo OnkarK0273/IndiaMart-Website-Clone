@@ -16,7 +16,7 @@ import {
 import React, { useState } from "react";
 
 export default function HomeTop() {
-    const [flag,setFlag] = useState(false)
+    const [flag,setFlag] = useState(true)
   return (
     <Box>
       <Flex

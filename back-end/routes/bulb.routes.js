@@ -1,13 +1,15 @@
 const express = require("express");
-const { BulbModel } = require("../model/bulb.model");
+const BulbModel = require("../model/bulb.model");
 const bulbRouter = express.Router();
 var jwt = require("jsonwebtoken");
+require("dotenv").config();
+const auth = require("../middleware/auth.middleware");
 
 // Read
 bulbRouter.get("/", async (req, res) => {
-  const token = req.headers.authorization;
+  const { token } = req.headers;
   // console.log(token);
-  const decoded = jwt.verify(token, "shhhhh");
+  const decoded = jwt.verify(token, process.env.SECRET_KEY);
 
   try {
     if (decoded) {
@@ -19,13 +21,8 @@ bulbRouter.get("/", async (req, res) => {
   }
 });
 
-// sample
-bulbRouter.get("/sample", async (req, res) => {
-  res.send("for checking commit problem");
-});
-
 // Create
-bulbRouter.post("/add", async (req, res) => {
+bulbRouter.post("/add", auth, async (req, res) => {
   try {
     const payload = req.body;
     // console.log(payload);
@@ -38,7 +35,7 @@ bulbRouter.post("/add", async (req, res) => {
 });
 
 // Update
-bulbRouter.patch("/update/:bulbID", async (req, res) => {
+bulbRouter.patch("/update/:bulbID", auth, async (req, res) => {
   const { bulbID } = req.params;
   const data = req.body;
   // console.log(bulbID,payload)
@@ -51,7 +48,7 @@ bulbRouter.patch("/update/:bulbID", async (req, res) => {
 });
 
 // Delete
-bulbRouter.delete("/delete/:bulbID", async (req, res) => {
+bulbRouter.delete("/delete/:bulbID", auth, async (req, res) => {
   const { bulbID } = req.params;
   // console.log(bulbID);
   try {

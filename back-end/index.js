@@ -7,7 +7,8 @@ const plywoodRoute = require("./routes/plywood.product.route");
 const adminRoute = require('./routes/admin.route')
 require("dotenv").config();
 const app = express();
-const { bulbRouter } = require("./routes/bulb.route");
+const { bulbRouter } = require("./routes/bulb.routes");
+const { machineRouter } = require("./routes/machine.routes");
 
 // global middleweres---------------
 
@@ -29,7 +30,10 @@ app.use("/plywood", plywoodRoute);
 
 
 //route-3
-app.use("/bulb", bulbRouter);
+app.use("/bulbs", bulbRouter);
+
+//route-4
+app.use("/machines", machineRouter);
 
 // run http and back-end server-------------------
 
