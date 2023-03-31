@@ -15,10 +15,10 @@ const userSchema = mongoose.Schema(
       enum: ["admin", "user", "super_admin"],
     },
     address: {
-      city: { type: String, required: true },
-      state: { type: String, required: true },
-      country: { type: String, required: true },
-      pin: { type: Number, required: true },
+      city: { type: String, required: false },
+      state: { type: String, required: false },
+      country: { type: String, required: false },
+      pin: { type: Number, required: false },
     },
   },
   {

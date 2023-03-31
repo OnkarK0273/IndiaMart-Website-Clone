@@ -19,11 +19,12 @@ const userRoute = express.Router();
 
 userRoute.post("/register", async (req, res) => {
   const { email, password } = req.body;
+  console.log(req.body)
   try {
     const users = await UserModel.find({ email });
 
     if (users.length > 0) {
-      res.status(400).send({ error: "user already exists" });
+    return  res.status(400).send({ error: "user already exists" });
     }
     const hashPass = await bcrypt.hash(password, 5);
     //  console.log(hashPass)

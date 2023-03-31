@@ -40,9 +40,7 @@ export default function Sign() {
       password,
       age: 0,
       mobile,
-      role: {
-        type: "user"
-      },
+      role:"user",
       address: {
         city: "",
         state: "",
@@ -71,7 +69,7 @@ export default function Sign() {
         duration: 1000,
         isClosable: true,
       })
-      navigate('/log')
+      navigate('/login')
     }
 
   },[error,isSign])
