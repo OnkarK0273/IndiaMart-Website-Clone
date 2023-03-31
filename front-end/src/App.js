@@ -1,25 +1,33 @@
-import './App.css';
+import "./App.css";
 
-import Footer from './components/home/Footer';
-import Navbar from './components/home/Nav';
+import Footer from "./Components/home/Footer";
+import Navbar from "./Components/home/Nav";
 
-import AllRoutes from './routes/AllRoutes';
+import AllRoutes from "./routes/AllRoutes";
 import { useLocation } from "react-router-dom";
 function App() {
-  const location = useLocation()
+  const location = useLocation();
   return (
+    <div className="App">
+      {location.pathname === "/adminDashboard" ||
+      location.pathname === "/addProduct" ||
+      location.pathname === "/addNewProduct" ||
+      location.pathname === "/addProduct/:id" ? (
+        false
+      ) : (
+        <Navbar />
+      )}
 
-    <div className='App' >
-      {
-        location.pathname === '/adminDashboard' || location.pathname === '/addProduct' ||  location.pathname === '/addNewProduct' ||  location.pathname === '/addProduct/:id' ? false :  <Navbar/>
-      }
-  
-      <AllRoutes/>
+      <AllRoutes />
 
-      {
-        location.pathname === '/adminDashboard' || location.pathname === '/addProduct' ||  location.pathname === '/addNewProduct' ||  location.pathname === '/addProduct/:id' ? false :  <Footer/>
-      }
-      
+      {location.pathname === "/adminDashboard" ||
+      location.pathname === "/addProduct" ||
+      location.pathname === "/addNewProduct" ||
+      location.pathname === "/addProduct/:id" ? (
+        false
+      ) : (
+        <Footer />
+      )}
     </div>
   );
 }
