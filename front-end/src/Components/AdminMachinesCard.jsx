@@ -1,20 +1,3 @@
-// import { Box, Image, Text } from '@chakra-ui/react'
-// import React from 'react'
-
-// const AdminPlywoodCard = ({product}) => {
-//     const {_id,title,brand,img1} =product[0]
-//   return (
-//     <Box border={"1px solid red"} w="500px" padding={"0.5rem"}>
-//         <Text>
-//           {title}
-//         </Text>
-//         <Image src={img1} width="10rem"/>
-//     </Box>
-//   )
-// }
-
-// export default AdminPlywoodCard
-
 import {
   Button,
   Center,
@@ -26,12 +9,13 @@ import {
   useColorModeValue,
   useDisclosure,
 } from "@chakra-ui/react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { deleteProductProduct } from "../redux/Admin/admin.action";
 import { deleteMachine } from "../redux/MachineAdmin/machineadmin.action";
 
-export default function AdminMachinesCard({ product, open }) {
+export default function AdminMachinesCard({ product, open, getId }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const {
     _id,
@@ -45,6 +29,18 @@ export default function AdminMachinesCard({ product, open }) {
     contact,
     img1,
   } = product;
+
+  const [prod, setProduct] = useState({
+    title,
+    price,
+    desc,
+    Machine_Type,
+    Machine_Gauges,
+    supplier,
+    supplier_Addres,
+    contact,
+    img1,
+  });
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -129,7 +125,8 @@ export default function AdminMachinesCard({ product, open }) {
               bg="gray.200"
               onClick={() => {
                 open();
-                navigate(`/addProduct/${_id}`);
+                // navigate(`/addProduct/${_id}`);
+                getId(prod);
               }}
             >
               Edit

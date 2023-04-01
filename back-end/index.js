@@ -1,10 +1,9 @@
-
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const userRoute = require("./routes/user.route");
 const plywoodRoute = require("./routes/plywood.product.route");
-const adminRoute = require('./routes/admin.route')
+const adminRoute = require("./routes/admin.route");
 require("dotenv").config();
 const app = express();
 const { bulbRouter } = require("./routes/bulb.routes");
@@ -20,14 +19,11 @@ app.use(cors());
 // route-1
 app.use("/users", userRoute);
 
-
 // route-
-app.use('/admin',adminRoute)
-
+app.use("/admin", adminRoute);
 
 //route-2
 app.use("/plywood", plywoodRoute);
-
 
 //route-3
 app.use("/bulbs", bulbRouter);
@@ -39,7 +35,7 @@ app.use("/machines", machineRouter);
 
 app.listen(process.env.HTTP_PORT, async () => {
   try {
-    await mongoose.connect(`mongodb://localhost:27017/martmate`);
+    await mongoose.connect(process.env.MONGO_CONNECT);
     console.log("connected db");
   } catch (err) {
     console.log("not-connected");

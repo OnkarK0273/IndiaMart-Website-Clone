@@ -1,5 +1,4 @@
-
-import React, { useMemo } from 'react'
+import React, { useMemo } from "react";
 import {
   Button,
   Center,
@@ -15,14 +14,44 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { deleteProductProduct } from "../redux/Admin/admin.action";
 
- function AdminPlywoodCard({ product, open ,getId }) {
-   
-   const { _id, title,price,quan ,size,Color,Wood_Type,UsageApplication,Thickness,brand,supplier,supplier_Addres,mob,contact, img1,img2,
-   img3,
-   img4} =
-     product;
+function AdminPlywoodCard({ product, open, getId }) {
+  const {
+    _id,
+    title,
+    price,
+    quan,
+    size,
+    Color,
+    Wood_Type,
+    UsageApplication,
+    Thickness,
+    brand,
+    supplier,
+    supplier_Addres,
+    mob,
+    contact,
+    img1,
+    img2,
+    img3,
+    img4,
+  } = product;
+  
   const [prod, setProduct] = useState({
-    title,price,quan ,size,Color,Wood_Type,UsageApplication,Thickness,brand,supplier,supplier_Addres,mob,contact, img1,img2,
+    title,
+    price,
+    quan,
+    size,
+    Color,
+    Wood_Type,
+    UsageApplication,
+    Thickness,
+    brand,
+    supplier,
+    supplier_Addres,
+    mob,
+    contact,
+    img1,
+    img2,
     img3,
     img4,
   });
@@ -142,4 +171,4 @@ import { deleteProductProduct } from "../redux/Admin/admin.action";
   );
 }
 
-export default React.memo(AdminPlywoodCard)
+export default React.memo(AdminPlywoodCard);
