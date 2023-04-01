@@ -38,7 +38,6 @@ const AdminPlywoodPanel = () => {
   const { plyWoodProducts } = useSelector((store) => store.product);
   console.log(plyWoodProducts);
 
-
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -49,7 +48,6 @@ const AdminPlywoodPanel = () => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-   
     dispatch(getPlywoodProducts());
   }, [dispatch]);
 
@@ -58,11 +56,11 @@ const AdminPlywoodPanel = () => {
     dispatch(updatePlywoodProducts(product));
   };
 
-  const getId = useCallback((prod)=>{
-      // setId(id)
-      console.log("prod",prod)
-     setProduct(prod);
-  },[])
+  const getId = useCallback((prod) => {
+    // setId(id)
+    console.log("prod", prod);
+    setProduct(prod);
+  }, []);
 
   return (
     <>
