@@ -1,20 +1,5 @@
-// import { Box, Image, Text } from '@chakra-ui/react'
-// import React from 'react'
 
-// const AdminPlywoodCard = ({product}) => {
-//     const {_id,title,brand,img1} =product[0]
-//   return (
-//     <Box border={"1px solid red"} w="500px" padding={"0.5rem"}>
-//         <Text>
-//           {title}
-//         </Text>
-//         <Image src={img1} width="10rem"/>
-//     </Box>
-//   )
-// }
-
-// export default AdminPlywoodCard
-
+import React, { useMemo } from 'react'
 import {
   Button,
   Center,
@@ -25,17 +10,26 @@ import {
   Text,
   useColorModeValue,
 } from "@chakra-ui/react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { deleteProductProduct } from "../redux/Admin/admin.action";
 
-export default function AdminPlywoodCard({ product, open }) {
+ function AdminPlywoodCard({ product, open ,getId }) {
+   
+   const { _id, title,price,quan ,size,Color,Wood_Type,UsageApplication,Thickness,brand,supplier,supplier_Addres,mob,contact, img1,img2,
+   img3,
+   img4} =
+     product;
+  const [prod, setProduct] = useState({
+    title,price,quan ,size,Color,Wood_Type,UsageApplication,Thickness,brand,supplier,supplier_Addres,mob,contact, img1,img2,
+    img3,
+    img4,
+  });
   // const { isOpen, onOpen, onClose } = useDisclosure()
-  const { _id, title, brand, img1, mob, price, supplier, supplier_Addres } =
-    product;
 
-  const navigate = useNavigate();
   const dispatch = useDispatch();
+
   return (
     <Center py={6}>
       <Stack
@@ -116,8 +110,8 @@ export default function AdminPlywoodCard({ product, open }) {
               rounded={"full"}
               bg="gray.200"
               onClick={() => {
+                getId(prod);
                 open();
-                navigate(`/addProduct/${_id}`);
               }}
             >
               Edit
@@ -147,3 +141,5 @@ export default function AdminPlywoodCard({ product, open }) {
     </Center>
   );
 }
+
+export default React.memo(AdminPlywoodCard)
