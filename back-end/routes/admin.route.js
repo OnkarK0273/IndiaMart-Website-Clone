@@ -14,7 +14,7 @@ const adminRoute = express.Router();
 
 adminRoute.get("/usersdata", admin_auth, async (req, res) => {
   try {
-    const users = await UserModel.find();
+    const users = await UserModel.find({ role: "user" });
     res.status(201).json({ users: users });
   } catch (err) {
     res.status(401).json({ error: "something went wrong" });

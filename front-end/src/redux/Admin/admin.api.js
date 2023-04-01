@@ -12,6 +12,10 @@ export const getPlywoodAPI = async () => {
     return res?.data?.data
 }
 
+export const getSinglePlywoodAPI = async(id)=>{
+    let res = await axios.get(`${baseURL}/plywood/${id}`)
+}
+
 export  const updateProductAPI = async(prod)=>{
     // console.log(prod)
     let res = await axios.patch(`${baseURL}/plywood/update/${prod._id}`,prod,{
@@ -107,7 +111,7 @@ export const postAdminDataAPI=async(adminObj)=>{
 }
 
 export const getUsersDataAPI = async(role)=>{
-    let res = await axios.get(`${baseURL}/admin/${role}`,{
+    let res = await axios.get(`${baseURL}/admin/usersdata?${role}`,{
         headers: {
             'Content-Type': 'application/json',
             'token': localStorage.getItem('token')
