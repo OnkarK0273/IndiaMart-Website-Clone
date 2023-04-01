@@ -1,19 +1,21 @@
 import axios from "axios";
 import { baseURL } from "../../utils/variables";
 
-export const getPlywoodAPI = async () => {
-  let res = await axios.get(`${baseURL}/plywood`, {
+export const getMachineAPI = async () => {
+  let res = await axios.get(`${baseURL}/machines`, {
     headers: {
       "Content-Type": "application/json",
       token: localStorage.getItem("token"),
+      // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2NDI0N2E2YjQyYjJmYmQwOTIyMTc3ODMiLCJyb2xlIjoidXNlciIsImlhdCI6MTY4MDM2OTI4MH0.HLvP_o9KZJkVzOJzb2ySqj8UQJS2c80UbcJNBzHbfw0",
     },
   });
-  return res?.data?.data;
+  console.log("machine", res.data.data);
+  return res?.data;
 };
 
-export const updateProductAPI = async (prod) => {
+export const updateMachineAPI = async (prod) => {
   // console.log(prod)
-  let res = await axios.patch(`${baseURL}/plywood/update/${prod._id}`, prod, {
+  let res = await axios.patch(`${baseURL}/machines/update/${prod._id}`, prod, {
     headers: {
       "Content-Type": "application/json",
       token: localStorage.getItem("token"),
@@ -22,8 +24,8 @@ export const updateProductAPI = async (prod) => {
   return res?.data;
 };
 
-export const deleteProductAPI = async (id) => {
-  let res = await axios.delete(`${baseURL}/plywood/delete/${id}`, {
+export const deleteMachineAPI = async (id) => {
+  let res = await axios.delete(`${baseURL}/machines/delete/${id}`, {
     headers: {
       "Content-Type": "application/json",
       token: localStorage.getItem("token"),
@@ -32,19 +34,19 @@ export const deleteProductAPI = async (id) => {
   return res?.data;
 };
 
-export const postProductAPI = async (prod) => {
-  let res = await axios.post(`${baseURL}/plywood/add/`, prod, {
+export const postMachineAPI = async (prod) => {
+  let res = await axios.post(`${baseURL}/machines/add/`, prod, {
     headers: {
       "Content-Type": "application/json",
       token: localStorage.getItem("token"),
     },
   });
-  return res?.data;
+  return res.data;
 };
 
 // get admin data
 
-export const getAdminsDataAPI = async (role) => {
+export const getMachineDataAPI = async (role) => {
   let res = await axios.get(`${baseURL}/admin/admindata?role=${role}`, {
     headers: {
       "Content-Type": "application/json",
@@ -54,7 +56,7 @@ export const getAdminsDataAPI = async (role) => {
   return res?.data?.users;
 };
 
-export const getAdminDataAPI = async (id) => {
+export const getAdminMachineDataAPI = async (id) => {
   let res = await axios.get(`${baseURL}/admin/${id}`, {
     headers: {
       "Content-Type": "application/json",
@@ -65,7 +67,7 @@ export const getAdminDataAPI = async (id) => {
   return res?.data?.users;
 };
 
-export const updateAdminDataAPI = async (admin) => {
+export const updateAdminMachineDataAPI = async (admin) => {
   //    console.log(admin)
   let res = await axios.patch(
     `${baseURL}/admin/updateAdmin/${admin._id}`,
@@ -81,7 +83,7 @@ export const updateAdminDataAPI = async (admin) => {
   return res?.data;
 };
 
-export const deleteAdminDataAPI = async (id) => {
+export const deleteAdminMachineDataAPI = async (id) => {
   //    console.log(admin)
   let res = await axios.delete(`${baseURL}/admin/deleteAdmin/${id}`, {
     headers: {
@@ -93,7 +95,7 @@ export const deleteAdminDataAPI = async (id) => {
   return res?.data;
 };
 
-export const postAdminDataAPI = async (adminObj) => {
+export const postAdminMachineDataAPI = async (adminObj) => {
   let res = await axios.post(`${baseURL}/users/register`, adminObj, {
     headers: {
       "Content-Type": "application/json",
@@ -103,7 +105,7 @@ export const postAdminDataAPI = async (adminObj) => {
   return res?.data;
 };
 
-export const getUsersDataAPI = async (role) => {
+export const getUsersMachineDataAPI = async (role) => {
   let res = await axios.get(`${baseURL}/admin/${role}`, {
     headers: {
       "Content-Type": "application/json",

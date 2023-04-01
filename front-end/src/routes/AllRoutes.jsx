@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router-dom";
 
 import AdminNavbar from '../Components/AdminNavbar';
 import AddAdmin from '../pages/Admin/AddAdmin';
+import AddNewMachines from "../pages/Admin/AddNewMachines";
 import AddNewProduct from '../pages/Admin/AddNewProduct';
 
 import AddProduct from '../pages/Admin/AddProduct';
@@ -33,7 +34,7 @@ export default function AllRoutes() {
 
             <Route path='/addProduct/:id' element={<><AdminNavbar/><AddProduct/></>}/>
             <Route path='/addNewProduct' element={<><AdminNavbar/><AddNewProduct/></>}/>
-
+            <Route path='/addNewMachines' element={<><AdminNavbar/><AddNewMachines/></>}/>
         <Route />
       </Routes>
     </>

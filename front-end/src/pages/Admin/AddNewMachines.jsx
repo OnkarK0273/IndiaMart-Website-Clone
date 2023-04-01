@@ -1,43 +1,35 @@
 import { Box, Button, Heading, Input } from "@chakra-ui/react";
 import React, { useState } from "react";
-import {
-  FormControl,
-  FormLabel,
-  FormErrorMessage,
-  FormHelperText,
-} from "@chakra-ui/react";
+import { FormControl, FormLabel } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
-import { postProduct } from "../../redux/Admin/admin.action";
+import { postMachine } from "../../redux/MachineAdmin/machineadmin.action";
 
-const AddNewProduct = () => {
+const AddNewMachines = () => {
   const dispatch = useDispatch();
   const [product, setProduct] = useState({
-    title: "",
-    price: 0,
-    quan: "",
-    size: "",
-    Color: "",
-    Wood_Type: "",
-    UsageApplication: "",
-    Thickness: 0,
-    brand: "",
-    supplier: "",
-    supplier_Addres: "",
-    mob: 0,
+    title: "", //
+    price: 0, //
+    desc: "", //
+    Machine_Type: "", //
+    desc_2: "", //
+    desc_3: "", //
+    Machine_Gauges: "", //
+    supplier: "", //
+    supplier_Addres: "", //
+    cl: "", //
+    mob: "",
     contact: "",
     img1: "",
     img2: "",
-    img3: "",
-    img4: "",
   });
 
   const handleChange = (e) => {
     setProduct({ ...product, [e.target.name]: e.target.value });
   };
+  
   const handleSubmit = () => {
-    dispatch(postProduct(product));
+    dispatch(postMachine(product));
   };
-
   return (
     <Box
       width={{ base: "100%", md: "70%", lg: "80%" }}
@@ -58,32 +50,24 @@ const AddNewProduct = () => {
           <Input type="Number" name="price" onChange={handleChange} />
         </FormControl>
         <FormControl>
-          <FormLabel>Quantity :</FormLabel>
-          <Input type="text" name="quan" onChange={handleChange} />
+          <FormLabel>Description :</FormLabel>
+          <Input type="text" name="desc" onChange={handleChange} />
         </FormControl>
         <FormControl>
-          <FormLabel>Size :</FormLabel>
-          <Input type="text" name="size" onChange={handleChange} />
+          <FormLabel>Machine Type :</FormLabel>
+          <Input type="text" name="Machine_Type" onChange={handleChange} />
         </FormControl>
         <FormControl>
-          <FormLabel>Color :</FormLabel>
-          <Input type="text" name="Color" onChange={handleChange} />
+          <FormLabel>Description 2 :</FormLabel>
+          <Input type="text" name="desc_2" onChange={handleChange} />
         </FormControl>
         <FormControl>
-          <FormLabel>Wood Type :</FormLabel>
-          <Input type="text" name="Wood_Type" onChange={handleChange} />
+          <FormLabel>Description 3 :</FormLabel>
+          <Input type="text" name="desc_3" onChange={handleChange} />
         </FormControl>
         <FormControl>
-          <FormLabel>Usage Application :</FormLabel>
-          <Input type="text" name="UsageApplication" onChange={handleChange} />
-        </FormControl>
-        <FormControl>
-          <FormLabel>Thickness :</FormLabel>
-          <Input type="Number" name="Thickness" onChange={handleChange} />
-        </FormControl>
-        <FormControl>
-          <FormLabel>Brand :</FormLabel>
-          <Input type="text" name="Brand" onChange={handleChange} />
+          <FormLabel>Machine Gauges :</FormLabel>
+          <Input type="text" name="Machine_Gauges" onChange={handleChange} />
         </FormControl>
         <FormControl>
           <FormLabel>Supplier :</FormLabel>
@@ -92,6 +76,10 @@ const AddNewProduct = () => {
         <FormControl>
           <FormLabel>Supplier Address :</FormLabel>
           <Input type="text" name="supplier_Addres" onChange={handleChange} />
+        </FormControl>
+        <FormControl>
+          <FormLabel>Color :</FormLabel>
+          <Input type="text" name="cl" onChange={handleChange} />
         </FormControl>
         <FormControl>
           <FormLabel>Mobile :</FormLabel>
@@ -108,14 +96,6 @@ const AddNewProduct = () => {
         <FormControl>
           <FormLabel>Image 2 :</FormLabel>
           <Input type="text" name="img2" onChange={handleChange} />
-        </FormControl>
-        <FormControl>
-          <FormLabel>Image 3 :</FormLabel>
-          <Input type="text" name="img3" onChange={handleChange} />
-        </FormControl>
-        <FormControl>
-          <FormLabel>Image 4 :</FormLabel>
-          <Input type="text" name="img4" onChange={handleChange} />
         </FormControl>
 
         <Button
@@ -134,4 +114,4 @@ const AddNewProduct = () => {
   );
 };
 
-export default AddNewProduct;
+export default AddNewMachines;
