@@ -1,5 +1,6 @@
 import "./App.css";
 
+
 import Footer from "./Components/home/Footer";
 import Navbar from "./Components/home/Nav";
 
@@ -13,11 +14,14 @@ function App() {
       {location.pathname === "/adminDashboard" ||
       location.pathname === "/addProduct" ||
       location.pathname === "/addNewProduct" ||
-      location.pathname === "/addProduct/:id" || location.pathname === "/sell" ? (
+      location.pathname === "/addProduct/*" ? (
         false
       ) : (
         <Navbar />
       )}
+
+
+      
 
       <AllRoutes />
 
@@ -29,6 +33,7 @@ function App() {
       ) : (
         <Footer />
       )}
+
     </div>
   );
 }

@@ -1,5 +1,20 @@
+// import { Box, Image, Text } from '@chakra-ui/react'
+// import React from 'react'
 
-import React, { useMemo } from 'react'
+// const AdminPlywoodCard = ({product}) => {
+//     const {_id,title,brand,img1} =product[0]
+//   return (
+//     <Box border={"1px solid red"} w="500px" padding={"0.5rem"}>
+//         <Text>
+//           {title}
+//         </Text>
+//         <Image src={img1} width="10rem"/>
+//     </Box>
+//   )
+// }
+
+// export default AdminPlywoodCard
+
 import {
   Button,
   Center,
@@ -9,27 +24,28 @@ import {
   Stack,
   Text,
   useColorModeValue,
+  useDisclosure,
 } from "@chakra-ui/react";
-import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { deleteProductProduct } from "../redux/Admin/admin.action";
 
- function AdminPlywoodCard({ product, open ,getId }) {
-   
-   const { _id, title,price,quan ,size,Color,Wood_Type,UsageApplication,Thickness,brand,supplier,supplier_Addres,mob,contact, img1,img2,
-   img3,
-   img4} =
-     product;
-  const [prod, setProduct] = useState({
-    title,price,quan ,size,Color,Wood_Type,UsageApplication,Thickness,brand,supplier,supplier_Addres,mob,contact, img1,img2,
-    img3,
-    img4,
-  });
-  // const { isOpen, onOpen, onClose } = useDisclosure()
+export default function AdminBulbsCard({ product, open }) {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const {
+    _id,
+    title,
+    price,
+    Wattage,
+    Brand,
+    contact,
+    img1,
+    supplier,
+    supplier_Addres,
+  } = product;
 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-
   return (
     <Center py={6}>
       <Stack
@@ -58,7 +74,7 @@ import { deleteProductProduct } from "../redux/Admin/admin.action";
             {title}
           </Heading>
           <Text fontWeight={600} color={"gray.500"} size="sm" mb={4}>
-            {brand}
+            {Brand}
           </Text>
 
           <Stack align={"left"} justify={"left"} direction={"row"} mt={6}>
@@ -68,7 +84,7 @@ import { deleteProductProduct } from "../redux/Admin/admin.action";
               px={3}
               noOfLines="1"
             >
-              Mob: {mob}
+              Mob: {contact}
             </Text>
             <Text
               textAlign={"left"}
@@ -110,8 +126,8 @@ import { deleteProductProduct } from "../redux/Admin/admin.action";
               rounded={"full"}
               bg="gray.200"
               onClick={() => {
-                getId(prod);
                 open();
+                navigate(`/addProduct/${_id}`);
               }}
             >
               Edit
@@ -141,5 +157,3 @@ import { deleteProductProduct } from "../redux/Admin/admin.action";
     </Center>
   );
 }
-
-export default React.memo(AdminPlywoodCard)

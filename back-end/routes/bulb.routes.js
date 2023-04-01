@@ -13,7 +13,8 @@ bulbRouter.get("/", async (req, res) => {
 
   try {
     if (decoded) {
-      const bulbs = await BulbModel.find({ userID: decoded.userID });
+      // const bulbs = await BulbModel.find({ userID: decoded.userID });
+      const bulbs = await BulbModel.find();
       res.status(200).send(bulbs);
     }
   } catch (err) {
