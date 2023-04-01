@@ -40,27 +40,28 @@ const AdminPlywoodPanel = () => {
     console.log("id",id)
     const { isOpen, onOpen, onClose } = useDisclosure()
   const {plyWoodProducts} = useSelector(store=>store.product)
-  console.log(plyWoodProducts)
+  // console.log(plyWoodProducts)
 
   const navigate =useNavigate()
 
   const handleChange=(e)=>{
     setProduct({...product,[e.target.name]:e.target.value})
     // handleSubmit(product)
-     console.log(product)
-}
-
-const getProduct = ()=>{
-  axios.get(`${baseURL}/plywood/${id}`).then(res=>{setProduct(res.data.data) }).catch(err=>console.log(err))
-}
-  const dispatch = useDispatch()
-  useEffect(()=>{
-    getProduct()
-    dispatch(getPlywoodProducts())
-  },[dispatch])
-
+    //  console.log(product)
+    }
+    
+    const getProduct = ()=>{
+      axios.get(`${baseURL}/plywood/${id}`).then(res=>{setProduct(res?.data?.data) }).catch(err=>console.log(err))
+    }
+    const dispatch = useDispatch()
+    useEffect(()=>{
+      getProduct()
+      dispatch(getPlywoodProducts())
+    },[dispatch])
+    
+    
+  // console.log("product",product)
 const handleSubmit=()=>{
-  console.log(product)
    dispatch(updatePlywoodProducts(product))
   
 }

@@ -5,7 +5,8 @@ const initalState = {
     isLoading: false,
     isError: true,
     plyWoodProducts: [],
-    users: []
+    users: [],
+    admins:[]
 }
  
 export const reducer = (state = initalState, { type,payload }) => {
@@ -45,12 +46,24 @@ export const reducer = (state = initalState, { type,payload }) => {
                 isError:false,   
             }
 
+
+
         case types.GET_PRODUCT_ERROR:
             return {
                 ...state,
                 isLoading:false,
                 isError:true
             }
+
+            // admin 
+
+            case types.GET_ADMINS_SUCCESS:
+                return {
+                    ...state,
+                    isLoading:false,
+                    isError:false,
+                    admins:payload
+                }
 
         default: {
             return state

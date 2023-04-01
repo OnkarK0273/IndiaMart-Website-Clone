@@ -43,7 +43,10 @@ const AddNewProduct = () => {
     <Box width={{ base: "100%", md: "70%", lg: "80%" }}
     border="1px solid black"
     m="auto"
-    mr={0}>
+    mr={0}
+    top="0"
+    zIndex="10"
+    >
             <Box w={{base:"90%",md:"30rem",lg:"40rem"}} m="auto">
                 <Heading textAlign={"center"}>Add New Product</Heading>
       <FormControl>

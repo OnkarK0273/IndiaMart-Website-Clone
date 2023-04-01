@@ -1,7 +1,7 @@
 import './App.css';
 
-import Footer from './components/home/Footer';
-import Navbar from './components/home/Nav';
+import Footer from './Components/home/Footer';
+import Navbar from './Components/home/Nav';
 
 import AllRoutes from './routes/AllRoutes';
 import { useLocation } from "react-router-dom";
@@ -11,13 +11,13 @@ function App() {
 
     <div className='App' >
       {
-        location.pathname === '/adminDashboard' || location.pathname === '/addProduct' ? false :  <Navbar/>
+        location.pathname === '/adminDashboard' || location.pathname === '/addProduct' || location.pathname === '/admin' || location.pathname === '/admin/:id' ? false :  <Navbar/>
       }
   
       <AllRoutes/>
 
       {
-        location.pathname === '/adminDashboard' || location.pathname === '/addProduct' ? false :  <Footer/>
+        location.pathname === '/adminDashboard' || location.pathname === '/addProduct' || location.pathname === '/admin' || location.pathname === '/admin/:id' ? false :  <Footer/>
       }
       
     </div>

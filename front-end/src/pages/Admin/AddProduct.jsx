@@ -22,9 +22,11 @@ const AddProduct = () => {
       border="1px solid black"
       m="auto"
       mr={0}
+      top="0"
+      zIndex="10"
     >
       <Flex flexDir={"column"}>
-        <Box width={"full"}  border="1px solid red">
+        <Box width={"100%"}  border="1px solid red">
           <Tabs size="md" variant="enclosed" colorScheme={"messenger"}>
             <TabList>
               <Tab>Plywoods</Tab>

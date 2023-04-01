@@ -1,6 +1,6 @@
 
 import * as types from "./admin.action.type"
-import { deleteProductAPI, getPlywoodAPI, postProductAPI, updateProductAPI } from "./admin.api"
+import { deleteAdminDataAPI, deleteProductAPI, getAdminsDataAPI, getPlywoodAPI, postAdminDataAPI, postProductAPI, updateAdminDataAPI, updateProductAPI } from "./admin.api"
 
 export const getPlywoodProducts =()=>async (dispatch)=>{
      
@@ -63,3 +63,57 @@ export const postProduct=(prod)=>async(dispatch)=>{
     }
 
 }
+
+export const getAdminData = (role)=>async(dispatch)=>{
+
+    dispatch({type:types.GET_PRODUCT_LOADING})
+
+    try {
+        let data = await getAdminsDataAPI(role)
+        console.log(data)
+        dispatch({type:types.GET_ADMINS_SUCCESS,payload:data})
+    } catch (err) {
+        dispatch({type:types.GET_PRODUCT_ERROR})
+    }
+}
+
+export const updateAdminData = (admin)=>async(dispatch)=>{
+
+    dispatch({type:types.GET_PRODUCT_LOADING})
+
+    try {
+        let data = await updateAdminDataAPI(admin)
+        console.log("data",data)
+        // dispatch({type:types.GET_ADMINS_SUCCESS,payload:data})
+        dispatch(getAdminData("admin"))
+    } catch (err) {
+        dispatch({type:types.GET_PRODUCT_ERROR})
+    }
+}
+export const deleteAdminData = (id)=>async(dispatch)=>{
+
+    dispatch({type:types.GET_PRODUCT_LOADING})
+
+    try {
+        let data = await deleteAdminDataAPI(id)
+        console.log("data",data)
+        // dispatch({type:types.GET_ADMINS_SUCCESS,payload:data})
+        dispatch(getAdminData("admin"))
+    } catch (err) {
+        dispatch({type:types.GET_PRODUCT_ERROR})
+    }
+}
+export const postAdminData = (adminObj)=>async(dispatch)=>{
+
+    dispatch({type:types.GET_PRODUCT_LOADING})
+
+    try {
+        let data = await postAdminDataAPI(adminObj)
+        console.log("data",data)
+        // dispatch({type:types.GET_ADMINS_SUCCESS,payload:data})
+        dispatch(getAdminData("admin"))
+    } catch (err) {
+        dispatch({type:types.GET_PRODUCT_ERROR})
+    }
+}
+
