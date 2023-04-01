@@ -15,7 +15,8 @@ machineRouter.get("/", async (req, res) => {
 
   try {
     if (decoded) {
-      const machines = await MachineModel.find({ userID: decoded.userID });
+      // const machines = await MachineModel.find({ userID: decoded.userID });
+      const machines = await MachineModel.find();
       console.log(machines[0].userID);
 
       res.status(200).send(machines);

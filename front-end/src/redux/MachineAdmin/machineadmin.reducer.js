@@ -1,65 +1,63 @@
-import * as types from "./admin.action.type";
+import * as types from "./machineadmin.action.type";
 
 const initalState = {
   isLoading: false,
   isError: true,
-  plyWoodProducts: [],
+  machins: [],
   users: [],
   admins: [],
 };
 
-export const reducer = (state = initalState, { type, payload }) => {
+export const machineReducer = (state = initalState, { type, payload }) => {
   switch (type) {
-    case types.GET_PRODUCT_LOADING:
+    case types.GET_MACHINE_LOADING:
       return {
         ...state,
         isLoading: true,
         isError: false,
       };
 
-    case types.GET_PRODUCT_SUCCESS:
+    case types.GET_MACHINE_SUCCESS:
       return {
         ...state,
         isLoading: false,
         isError: false,
-        plyWoodProducts: payload,
+        machins: payload,
       };
-    case types.DELETE_PRODUCT_SUCCESS:
-      return {
-        ...state,
-        isLoading: false,
-        isError: false,
-      };
-    case types.POST_PRODUCT_SUCCESS:
+    case types.DELETE_MACHINE_SUCCESS:
       return {
         ...state,
         isLoading: false,
         isError: false,
       };
-    case types.UPDATE_PRODUCT_SUCCESS:
+    case types.POST_MACHINE_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+      };
+    case types.UPDATE_MACHINE_SUCCESS:
       return {
         ...state,
         isLoading: false,
         isError: false,
       };
 
-    case types.GET_PRODUCT_ERROR:
+    case types.GET_MACHINE_ERROR:
       return {
         ...state,
         isLoading: false,
         isError: true,
       };
 
-    // admin
-
-    case types.GET_ADMINS_SUCCESS:
+    case types.GET_ADMINS_MACHINE_SUCCESS:
       return {
         ...state,
         isLoading: false,
         isError: false,
         admins: payload,
       };
-    case types.GET_USERS_SUCCESS:
+    case types.GET_USERS_MACHINE_SUCCESS:
       return {
         ...state,
         isLoading: false,
