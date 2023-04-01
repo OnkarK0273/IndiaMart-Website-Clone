@@ -39,7 +39,7 @@ app.use("/machines", machineRouter);
 
 app.listen(process.env.HTTP_PORT, async () => {
   try {
-    await mongoose.connect(`${process.env.MONGO_CONNECT}`);
+    await mongoose.connect(`mongodb://localhost:27017/martmate`);
     console.log("connected db");
   } catch (err) {
     console.log("not-connected");

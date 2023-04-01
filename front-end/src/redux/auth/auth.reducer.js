@@ -8,7 +8,7 @@ const init = {
     token:token || '',
     error:null,
     isSign:false,
-    isLogin:token?true:false  ,
+    isLogin:false ,
     
 }
 
@@ -26,7 +26,7 @@ export default function authReducer(state = init,{type,payload}){
 
         case types.LOGIN:{
             sessionStorage.setItem("token",payload.token)
-            sessionStorage.setItem("user",payload.user)
+            sessionStorage.setItem("user", JSON.stringify(payload.user))
             return{...state,isLogin:true,token:payload.token,error:null}
         }
 

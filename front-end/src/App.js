@@ -3,6 +3,7 @@ import "./App.css";
 import Footer from "./Components/home/Footer";
 import Navbar from "./Components/home/Nav";
 
+
 import AllRoutes from "./routes/AllRoutes";
 import { useLocation } from "react-router-dom";
 function App() {
@@ -12,7 +13,7 @@ function App() {
       {location.pathname === "/adminDashboard" ||
       location.pathname === "/addProduct" ||
       location.pathname === "/addNewProduct" ||
-      location.pathname === "/addProduct/:id" ? (
+      location.pathname === "/addProduct/:id" || location.pathname === "/sell" ? (
         false
       ) : (
         <Navbar />
@@ -23,7 +24,7 @@ function App() {
       {location.pathname === "/adminDashboard" ||
       location.pathname === "/addProduct" ||
       location.pathname === "/addNewProduct" ||
-      location.pathname === "/addProduct/:id" ? (
+      location.pathname === "/addProduct/:id" || location.pathname === "/sell" ? (
         false
       ) : (
         <Footer />
