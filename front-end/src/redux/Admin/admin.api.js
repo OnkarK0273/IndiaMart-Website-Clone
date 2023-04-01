@@ -1,4 +1,4 @@
-git adimport axios from "axios";
+import axios from "axios";
 import { baseURL } from "../../utils/variables";
 
 export const getPlywoodAPI = async () => {
