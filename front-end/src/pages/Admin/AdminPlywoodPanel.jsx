@@ -52,11 +52,13 @@ const AdminPlywoodPanel = () => {
     img4: "",
   });
 
+
   const { id } = useParams();
   console.log("id", id);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { plyWoodProducts } = useSelector((store) => store.product);
   console.log(plyWoodProducts);
+
 
   const navigate = useNavigate();
 
@@ -65,6 +67,7 @@ const AdminPlywoodPanel = () => {
     // handleSubmit(product)
     console.log(product);
   };
+
 
   const getProduct = () => {
     axios

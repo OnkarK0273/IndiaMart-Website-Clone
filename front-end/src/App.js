@@ -1,7 +1,9 @@
 import "./App.css";
 
+
 import Footer from "./Components/home/Footer";
 import Navbar from "./Components/home/Nav";
+
 
 import AllRoutes from "./routes/AllRoutes";
 import { useLocation } from "react-router-dom";
@@ -18,6 +20,9 @@ function App() {
         <Navbar />
       )}
 
+
+      
+
       <AllRoutes />
 
       {location.pathname === "/adminDashboard" ||
@@ -28,6 +33,7 @@ function App() {
       ) : (
         <Footer />
       )}
+
     </div>
   );
 }
