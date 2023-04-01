@@ -8,22 +8,59 @@ const plywoodRoute = express.Router()
 
 
 plywoodRoute.get("/", async (req, res) => {
+  const {wood_type,Color,order,sortBy,brand,page,limit,supplier} = req.query
+const query ={}
+
+  if(wood_type){
+    query.wood_type= new RegExp(wood_type, 'i');
+  }
+  if(Color){
+    query.Color=new RegExp(Color, 'i')
+  }
+  if(brand){
+    query.brand=new RegExp(brand, 'i')
+  }
+  if(supplier){
+    query.supplier=new RegExp(supplier, 'i')
+  }
+  //  console.log(query)
+   
+   const sort = {};
+   if (sortBy) sort[sortBy] = order;
+   const options = {
+     sort,
+     limit: parseInt(limit) || 10,
+     skip: (parseInt(page) - 1) * parseInt(limit) || 0,
+   }
+
+  //  console.log(sort)
+
   try {
-    const plywoodProducts = await PlywoodProductModel.find();
+    const plywoodProducts = await PlywoodProductModel.find(query,null,options);
 
     res.status(200).send({ data: plywoodProducts });
   } catch (err) {
     res.status(200).send({ error: err.message });
   }
-});plywoodRoute.get("/:id",async(req,res)=>{
+});
+plywoodRoute.get("/:id",async(req,res)=>{
     const {id} = req.params
 // console.log(id)
     try {
         
+      if(order){
+
         const plywoodProducts = await PlywoodProductModel.findOne({_id:id})
 
         res.status(200).send({'data':plywoodProducts})
         
+      }else{
+
+        const plywoodProducts = await PlywoodProductModel.findOne({_id:id})
+
+        res.status(200).send({'data':plywoodProducts})
+        
+      }
     } catch (err) {
         res.status(200).send({error:err.message})
         

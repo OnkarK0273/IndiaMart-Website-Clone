@@ -11,7 +11,7 @@ import {
   ModalOverlay,
   useDisclosure,
 } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import AdminPlywoodCard from "../../Components/AdminPlywoodCard";
@@ -32,29 +32,8 @@ import axios from "axios";
 import { baseURL } from "../../utils/variables";
 
 const AdminPlywoodPanel = () => {
-  const [product, setProduct] = useState({
-    title: "",
-    price: 0,
-    quan: "",
-    size: "",
-    Color: "",
-    Wood_Type: "",
-    UsageApplication: "",
-    Thickness: 0,
-    brand: "",
-    supplier: "",
-    supplier_Addres: "",
-    mob: 0,
-    contact: "",
-    img1: "",
-    img2: "",
-    img3: "",
-    img4: "",
-  });
+  const [product, setProduct] = useState({});
 
-
-  const { id } = useParams();
-  console.log("id", id);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { plyWoodProducts } = useSelector((store) => store.product);
   console.log(plyWoodProducts);
@@ -68,18 +47,9 @@ const AdminPlywoodPanel = () => {
     console.log(product);
   };
 
-
-  const getProduct = () => {
-    axios
-      .get(`${baseURL}/plywood/${id}`)
-      .then((res) => {
-        setProduct(res.data.data);
-      })
-      .catch((err) => console.log(err));
-  };
   const dispatch = useDispatch();
   useEffect(() => {
-    getProduct();
+   
     dispatch(getPlywoodProducts());
   }, [dispatch]);
 
@@ -87,6 +57,12 @@ const AdminPlywoodPanel = () => {
     console.log(product);
     dispatch(updatePlywoodProducts(product));
   };
+
+  const getId = useCallback((prod)=>{
+      // setId(id)
+      console.log("prod",prod)
+     setProduct(prod);
+  },[])
 
   return (
     <>
@@ -274,7 +250,7 @@ const AdminPlywoodPanel = () => {
         {plyWoodProducts &&
           plyWoodProducts?.map((el) => (
             <Box key={el._id}>
-              <AdminPlywoodCard product={el} open={onOpen} />
+              <AdminPlywoodCard product={el} getId={getId} open={onOpen} />
             </Box>
           ))}
       </Box>
