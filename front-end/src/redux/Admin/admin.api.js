@@ -105,3 +105,14 @@ export const postAdminDataAPI=async(adminObj)=>{
     return res?.data
 
 }
+
+export const getUsersDataAPI = async(role)=>{
+    let res = await axios.get(`${baseURL}/admin/${role}`,{
+        headers: {
+            'Content-Type': 'application/json',
+            'token': localStorage.getItem('token')
+        }
+    })
+
+    return res?.data?.users
+}

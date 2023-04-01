@@ -64,6 +64,13 @@ export const reducer = (state = initalState, { type,payload }) => {
                     isError:false,
                     admins:payload
                 }
+            case types.GET_USERS_SUCCESS:
+                return {
+                    ...state,
+                    isLoading:false,
+                    isError:false,
+                    users:payload
+                }
 
         default: {
             return state

@@ -1,6 +1,6 @@
 
 import * as types from "./admin.action.type"
-import { deleteAdminDataAPI, deleteProductAPI, getAdminsDataAPI, getPlywoodAPI, postAdminDataAPI, postProductAPI, updateAdminDataAPI, updateProductAPI } from "./admin.api"
+import { deleteAdminDataAPI, deleteProductAPI, getAdminsDataAPI, getPlywoodAPI, getUsersDataAPI, postAdminDataAPI, postProductAPI, updateAdminDataAPI, updateProductAPI } from "./admin.api"
 
 export const getPlywoodProducts =()=>async (dispatch)=>{
      
@@ -117,3 +117,15 @@ export const postAdminData = (adminObj)=>async(dispatch)=>{
     }
 }
 
+export const getUsersData = (role)=>async(dispatch)=>{
+
+    dispatch({type:types.GET_PRODUCT_LOADING})
+
+    try {
+        let data = await getUsersDataAPI(role)
+        console.log(data)
+        dispatch({type:types.GET_USERS_SUCCESS,payload:data})
+    } catch (err) {
+        dispatch({type:types.GET_PRODUCT_ERROR})
+    }
+} 
