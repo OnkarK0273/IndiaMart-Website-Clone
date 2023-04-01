@@ -1,6 +1,7 @@
-import { Heading } from '@chakra-ui/react';
-import React from 'react'
+import { Heading } from "@chakra-ui/react";
+import React from "react";
 import { Route, Routes } from "react-router-dom";
+
 
 import AdminNavbar from '../Components/AdminNavbar';
 import AddAdmin from '../pages/Admin/AddAdmin';
@@ -18,6 +19,7 @@ import Sign from '../pages/Sign';
 export default function AllRoutes() {
   return (
     <>
+
         <Routes>
             <Route path={"/"} element={<Home/>} />
             <Route path={"/login"} element={<Login/>} />
@@ -32,9 +34,8 @@ export default function AllRoutes() {
             <Route path='/addProduct/:id' element={<><AdminNavbar/><AddProduct/></>}/>
             <Route path='/addNewProduct' element={<><AdminNavbar/><AddNewProduct/></>}/>
 
-            <Route/>
-
-        </Routes>
+        <Route />
+      </Routes>
     </>
-  )
+  );
 }

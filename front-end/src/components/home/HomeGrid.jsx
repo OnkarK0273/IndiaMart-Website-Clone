@@ -34,7 +34,7 @@ export default function HomeGrid({data1}) {
             <Box m='auto' >
                 <Grid templateColumns={{base:'repeat(2, 1fr)',sm:'repeat(3, 1fr)'}} p='10px'  gap={3}>
                     {
-                        data1.info.map((el)=>(<HomeGridItems {...el} />))
+                        data1.info.map((el,i)=>(<HomeGridItems key={i} {...el} />))
                     }
                     
                 </Grid>

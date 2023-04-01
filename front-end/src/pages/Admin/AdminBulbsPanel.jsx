@@ -3,7 +3,6 @@ import {
   Button,
   Flex,
   Modal,
-  ModalBody,
   ModalCloseButton,
   ModalContent,
   ModalFooter,
@@ -14,51 +13,36 @@ import {
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import AdminPlywoodCard from "../../Components/AdminPlywoodCard";
-import {
-  getPlywoodProducts,
-  postProduct,
-  updatePlywoodProducts,
-} from "../../redux/Admin/admin.action";
-import PlyUpdate from "./AddNewProduct";
+
 import { Input } from "@chakra-ui/react";
-import {
-  FormControl,
-  FormLabel,
-  FormErrorMessage,
-  FormHelperText,
-} from "@chakra-ui/react";
+import { FormControl, FormLabel } from "@chakra-ui/react";
 import axios from "axios";
 import { baseURL } from "../../utils/variables";
+import { getBulb, updateBulb } from "../../redux/BulbAdmin/bulbadmin.action";
+import AdminBulbsCard from "../../Components/AdminBulbsCard";
 
-const AdminPlywoodPanel = () => {
+const AdminBulbsPanel = () => {
   const [product, setProduct] = useState({
     title: "",
     price: 0,
-    quan: "",
-    size: "",
-    Color: "",
-    Wood_Type: "",
-    UsageApplication: "",
-    Thickness: 0,
-    brand: "",
+    desc: "",
+    Wattage: "",
+    Brand: "",
+    Lighting_Color: "",
+    application: "",
     supplier: "",
     supplier_Addres: "",
-    mob: 0,
+    cl: "",
     contact: "",
     img1: "",
     img2: "",
-    img3: "",
-    img4: "",
   });
-
 
   const { id } = useParams();
   console.log("id", id);
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { plyWoodProducts } = useSelector((store) => store.product);
-  console.log(plyWoodProducts);
-
+  const { bulbs } = useSelector((store) => store.bulb);
+  console.log("Bulbs", bulbs);
 
   const navigate = useNavigate();
 
@@ -68,10 +52,9 @@ const AdminPlywoodPanel = () => {
     console.log(product);
   };
 
-
   const getProduct = () => {
     axios
-      .get(`${baseURL}/plywood/${id}`)
+      .get(`${baseURL}/bulbs/${id}`)
       .then((res) => {
         setProduct(res.data.data);
       })
@@ -80,12 +63,12 @@ const AdminPlywoodPanel = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     getProduct();
-    dispatch(getPlywoodProducts());
+    dispatch(getBulb());
   }, [dispatch]);
 
   const handleSubmit = () => {
     console.log(product);
-    dispatch(updatePlywoodProducts(product));
+    dispatch(updateBulb(product));
   };
 
   return (
@@ -93,7 +76,7 @@ const AdminPlywoodPanel = () => {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Modal PLywood</ModalHeader>
+          <ModalHeader>Modal Bulbs</ModalHeader>
           <ModalCloseButton />
 
           <Box w="80%" m="auto">
@@ -266,15 +249,15 @@ const AdminPlywoodPanel = () => {
         <Box>
           <Flex justifyContent={"end"} alignItems={"right"} mr="1rem">
             <Button onClick={() => navigate(`/addNewProduct`)}>
-              add plywood{" "}
+              Add Bulbs{" "}
             </Button>
           </Flex>
         </Box>
 
-        {plyWoodProducts &&
-          plyWoodProducts?.map((el) => (
+        {bulbs &&
+          bulbs?.map((el) => (
             <Box key={el._id}>
-              <AdminPlywoodCard product={el} open={onOpen} />
+              <AdminBulbsCard product={el} open={onOpen} />
             </Box>
           ))}
       </Box>
@@ -282,4 +265,4 @@ const AdminPlywoodPanel = () => {
   );
 };
 
-export default AdminPlywoodPanel;
+export default AdminBulbsPanel;

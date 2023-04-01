@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
     Flex,
     Box,
@@ -12,13 +12,50 @@ import {
     Heading,
     Text,
     useToast,
-    useColorModeValue,
+   
   } from '@chakra-ui/react';
-  import {Link as Navlink} from 'react-router-dom'
+  import {Link as Navlink, useNavigate} from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux';
+import { Log } from '../redux/auth/auth.action';
 export default function Login() {
     const [email,setEmail] = useState('')
-    const [pass,setPass] = useState('')
-    const onsubmit = ()=>{}
+    const [password,setPass] = useState('')
+    const toast = useToast()
+    const navigate = useNavigate();
+    const {error,isLogin} = useSelector((store)=>store.authReducer)
+    const dispatch = useDispatch()
+
+
+    const onsubmit = ()=>{
+      const payload ={
+        email,
+        password
+      }
+  
+      dispatch(Log(payload))
+    }
+    useEffect(()=>{
+      if(error){
+        toast({
+          title: error,
+          status: 'error',
+          duration: 1000,
+          isClosable: true,
+        })
+      }
+      if(isLogin){
+        toast({
+          title: 'Login Sucessfull.',
+          status: 'success',
+          duration: 1000,
+          isClosable: true,
+        })
+        navigate('/')
+      }
+  
+    },[error,isLogin])
+
+
   return (
     <div>
         <Flex
@@ -44,7 +81,7 @@ export default function Login() {
             </FormControl>
             <FormControl id="password">
               <FormLabel>Password</FormLabel>
-              <Input type="password" value={pass} onChange={(e)=>{setPass(e.target.value)}} />
+              <Input type="password" value={password} onChange={(e)=>{setPass(e.target.value)}} />
             </FormControl>
             <Stack spacing={10}>
               <Stack

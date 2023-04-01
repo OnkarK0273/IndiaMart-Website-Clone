@@ -1,7 +1,7 @@
-
-import * as types from "./admin.action.type"
+import * as types from "./admin.action.type";
 
 const initalState = {
+
     isLoading: false,
     isError: true,
     plyWoodProducts: [],
@@ -67,8 +67,6 @@ export const reducer = (state = initalState, { type,payload }) => {
 
         default: {
             return state
-        }
     }
-
-
-}
+  }
+};
