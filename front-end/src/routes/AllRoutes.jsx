@@ -16,6 +16,8 @@ import Login from '../pages/Login';
 import Sign from '../pages/Sign';
 
 
+import Sell from '../pages/sell'
+
 export default function AllRoutes() {
   return (
     <>
@@ -34,7 +36,7 @@ export default function AllRoutes() {
             <Route path='/addProduct/:id' element={<><AdminNavbar/><AddProduct/></>}/>
             <Route path='/addNewProduct' element={<><AdminNavbar/><AddNewProduct/></>}/>
 
-        <Route />
+        <Route path='/sell' element={<Sell/>} />
       </Routes>
     </>
   );
