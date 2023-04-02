@@ -6,7 +6,7 @@ require("dotenv").config();
 const auth = require("../middleware/auth.middleware");
 
 // Read
-machineRouter.get("/", async (req, res) => {
+machineRouter.get("/",auth, async (req, res) => {
   const { token } = req.headers;
   // console.log(token);
 
@@ -15,8 +15,8 @@ machineRouter.get("/", async (req, res) => {
 
   try {
     if (decoded) {
-      // const machines = await MachineModel.find({ userID: decoded.userID });
-      const machines = await MachineModel.find();
+      const machines = await MachineModel.find({ userID: decoded.userID });
+      // const machines = await MachineModel.find();
       console.log(machines[0].userID);
 
       res.status(200).send(machines);
