@@ -9,9 +9,10 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import AdminBulbsPanel from "./AdminBulbsPanel";
-
+import AdminMachinesCard from "../../Components/AdminMachinesCard";
 import AdminMedicinesPanel from "./AdminMedicinesPanel";
 import AdminPlywoodPanel from "./AdminPlywoodPanel";
+import AdminMachinesPanel from "./AdminMachinesPanel";
 
 const AddProduct = () => {
   return (
@@ -25,15 +26,13 @@ const AddProduct = () => {
       zIndex="10"
     >
       <Flex flexDir={"column"}>
-
         <Box width={"full"} border="1px solid red">
-
           <Tabs size="md" variant="enclosed" colorScheme={"messenger"}>
             <TabList position={"sticky"} top="0" backgroundColor={"white"} zIndex="12">
               <Tab>Plywoods</Tab>
-              <Tab>Medicines</Tab>
               <Tab>Machines</Tab>
               <Tab>Bulbs</Tab>
+              <Tab>Medicines</Tab>
             </TabList>
             <TabPanels>
               <TabPanel>
@@ -43,16 +42,17 @@ const AddProduct = () => {
               </TabPanel>
               <TabPanel>
                 <Box borderTop={"1px solid black"}>
-                  <AdminMedicinesPanel />
+                  <AdminMachinesPanel />
                 </Box>
               </TabPanel>
               <TabPanel>
-                <p>Three!</p>
-              </TabPanel>
-              <TabPanel>
-                <p>Four!</p>
                 <Box borderTop={"1px solid black"}>
                   <AdminBulbsPanel />
+                </Box>
+              </TabPanel>
+              <TabPanel>
+                <Box borderTop={"1px solid black"}>
+                  <AdminMedicinesPanel />
                 </Box>
               </TabPanel>
             </TabPanels>

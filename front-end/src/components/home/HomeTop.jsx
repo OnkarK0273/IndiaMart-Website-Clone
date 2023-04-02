@@ -13,10 +13,27 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
-
+import React, { useState,useEffect } from "react";
+import {  useSelector } from 'react-redux';
 export default function HomeTop() {
-    const [flag,setFlag] = useState(true)
+    const {isLogin} = useSelector((store)=>store.authReducer)
+    const [name,setName] = useState('')
+    const [mob,setMob] =  useState('')
+    const [email,setEmail] =  useState('')
+
+    useEffect(()=>{
+
+        const user = JSON.parse(sessionStorage.getItem("user"))
+        if(user){
+            setName(user.username.firstname + " " + user.username.lastname)
+            setEmail(user.email)
+            setMob(user.mobile)
+        }
+
+
+    },[isLogin])
+
+
   return (
     <Box>
       <Flex
@@ -27,7 +44,7 @@ export default function HomeTop() {
         minH={"50vh"}
       >
         {
-            flag?<Flex columnGap={'20px'} p='20px' >
+            isLogin?<Flex columnGap={'20px'} p='20px' >
                     <Box bg='whiteAlpha.700'display={{ base: 'none', md: 'flex' }}  >
                         <VStack p='10px' rowGap={'10px'} >
                             <Heading>Tell us what you Need</Heading>
@@ -49,9 +66,9 @@ export default function HomeTop() {
                     <Box  bg='whiteAlpha.700' >
                         <VStack p='10px' rowGap={'10px'} >
                              <Heading>Strengthen Your Profile</Heading>
-                             <Text fontWeight={'bold'} >Name : onkar.k</Text>
-                             <Text fontWeight={'bold'}>Mob : +917454649784</Text>
-                             <Text fontWeight={'bold'}>Gmail: onkar.k@email.com</Text>
+                             <Text fontWeight={'bold'} >Name : {name}</Text>
+                             <Text fontWeight={'bold'}>Mob : +91{mob}</Text>
+                             <Text fontWeight={'bold'}>Gmail: {email}</Text>
                              <Box>
                                 <InputGroup>
                                     <Input

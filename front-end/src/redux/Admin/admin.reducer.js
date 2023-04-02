@@ -50,33 +50,32 @@ export const reducer = (state = initalState, { type,payload }) => {
             }
 
 
+case types.GET_PRODUCT_ERROR:
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
+      };
 
-        case types.GET_PRODUCT_ERROR:
-            return {
-                ...state,
-                isLoading:false,
-                isError:true
-            }
+    // admin
 
-            // admin 
+    case types.GET_ADMINS_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        admins: payload,
+      };
+    case types.GET_USERS_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        users: payload,
+      };
 
-            case types.GET_ADMINS_SUCCESS:
-                return {
-                    ...state,
-                    isLoading:false,
-                    isError:false,
-                    admins:payload
-                }
-            case types.GET_USERS_SUCCESS:
-                return {
-                    ...state,
-                    isLoading:false,
-                    isError:false,
-                    users:payload
-                }
-
-        default: {
-            return state
+    default: {
+      return state;
     }
   }
 };
