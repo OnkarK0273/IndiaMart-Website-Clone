@@ -81,11 +81,7 @@ const AdminPlywoodPanel = () => {
         setsearchparams(getPlyParams.params)
         dispatch(getPlywoodProducts(color,Page,limit,headers));
       }
-      // else{
-
-      //   dispatch(getPlywoodProducts());
-
-      // }
+     
       
       console.log("page",Page)
       console.log("Total",totalPly)

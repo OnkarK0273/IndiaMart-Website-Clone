@@ -3,18 +3,8 @@ import axios from "axios"
 import { baseURL } from "../../utils/variables"
 
 export const getPlywoodAPI = async (color="brown",Page=1,limit=10,headers) => {
-    // console.log("headers",color)
-//    if(!color && !Page && !limit){
-//        let res = await axios.get(`${baseURL}/plywood`)
-
-//        return res?.data
-//    }else{
-
        let res = await axios.get(`${baseURL}/plywood?page=${Page}&limit=${limit}&Color=${color}`,{headers})
        return res?.data
-//    }
-
-  
 }
 
 
