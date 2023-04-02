@@ -1,4 +1,3 @@
-import React, { useMemo } from "react";
 import {
   Button,
   Center,
@@ -8,57 +7,43 @@ import {
   Stack,
   Text,
   useColorModeValue,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { deleteProductProduct, getPlywoodProducts } from "../redux/Admin/admin.action";
+import { deleteProductProduct } from "../redux/Admin/admin.action";
+import { deleteMachine } from "../redux/MachineAdmin/machineadmin.action";
 
-function AdminPlywoodCard({ product, open, getId }) {
+export default function AdminMachinesCard({ product, open, getId }) {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const {
     _id,
     title,
     price,
-    quan,
-    size,
-    Color,
-    Wood_Type,
-    UsageApplication,
-    Thickness,
-    brand,
+    desc,
+    Machine_Type,
+    Machine_Gauges,
     supplier,
     supplier_Addres,
-    mob,
     contact,
     img1,
-    img2,
-    img3,
-    img4,
   } = product;
-  
+
   const [prod, setProduct] = useState({
     title,
     price,
-    quan,
-    size,
-    Color,
-    Wood_Type,
-    UsageApplication,
-    Thickness,
-    brand,
+    desc,
+    Machine_Type,
+    Machine_Gauges,
     supplier,
     supplier_Addres,
-    mob,
     contact,
     img1,
-    img2,
-    img3,
-    img4,
   });
-  // const { isOpen, onOpen, onClose } = useDisclosure()
 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-
   return (
     <Center py={6}>
       <Stack
@@ -87,7 +72,7 @@ function AdminPlywoodCard({ product, open, getId }) {
             {title}
           </Heading>
           <Text fontWeight={600} color={"gray.500"} size="sm" mb={4}>
-            {brand}
+            {Machine_Type}
           </Text>
 
           <Stack align={"left"} justify={"left"} direction={"row"} mt={6}>
@@ -97,7 +82,7 @@ function AdminPlywoodCard({ product, open, getId }) {
               px={3}
               noOfLines="1"
             >
-              Mob: {mob}
+              Mob: {contact}
             </Text>
             <Text
               textAlign={"left"}
@@ -139,8 +124,9 @@ function AdminPlywoodCard({ product, open, getId }) {
               rounded={"full"}
               bg="gray.200"
               onClick={() => {
-                getId(prod);
                 open();
+                // navigate(`/addProduct/${_id}`);
+                getId(prod);
               }}
             >
               Edit
@@ -160,8 +146,7 @@ function AdminPlywoodCard({ product, open, getId }) {
               _focus={{
                 bg: "red.500",
               }}
-              onClick={() => {dispatch(deleteProductProduct(_id));
-              dispatch(getPlywoodProducts())}}
+              onClick={() => dispatch(deleteMachine(_id))}
             >
               Delete
             </Button>
@@ -171,5 +156,3 @@ function AdminPlywoodCard({ product, open, getId }) {
     </Center>
   );
 }
-
-export default React.memo(AdminPlywoodCard);

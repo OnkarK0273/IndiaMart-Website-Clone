@@ -31,6 +31,7 @@ function App() {
       location.pathname === "/addNewProduct" ||
       location.pathname === "/addProduct" ||
       location.pathname === "/admin" ? (
+
         false
       ) : (
         <Footer />

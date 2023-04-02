@@ -15,7 +15,8 @@ machineRouter.get("/", async (req, res) => {
 
   try {
     if (decoded) {
-      const machines = await MachineModel.find({ userID: decoded.userID });
+      // const machines = await MachineModel.find({ userID: decoded.userID });
+      const machines = await MachineModel.find();
       console.log(machines[0].userID);
 
       res.status(200).send(machines);
@@ -46,7 +47,7 @@ machineRouter.patch("/update/:machineID", auth, async (req, res) => {
   try {
     await MachineModel.findByIdAndUpdate({ _id: machineID }, data);
     res.status(200).send({ msg: "machine details has been updated" });
-  } catch (error) {
+  } catch (err) {
     res.status(400).send({ msg: err.message });
   }
 });

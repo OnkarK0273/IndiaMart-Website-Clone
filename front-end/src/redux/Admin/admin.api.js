@@ -1,6 +1,6 @@
+import axios from "axios";
+import { baseURL } from "../../utils/variables";
 
-import axios from "axios"
-import { baseURL } from "../../utils/variables"
 
 export const getPlywoodAPI = async (color="brown",Page=1,limit=10,headers) => {
        let res = await axios.get(`${baseURL}/plywood?page=${Page}&limit=${limit}&Color=${color}`,{headers})
@@ -112,3 +112,20 @@ export const getUsersDataAPI = async(role)=>{
 
     return res?.data?.users
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

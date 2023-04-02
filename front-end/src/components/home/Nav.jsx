@@ -26,12 +26,7 @@ import {
   VStack,
   InputGroup,
   Heading,
-  PopoverTrigger,
-  Popover,
-  PopoverContent,
-  PopoverArrow,
-  PopoverHeader,
-  PopoverBody
+
 } from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { MdSell,MdOutlineMessage,MdHome } from 'react-icons/md'
@@ -39,6 +34,8 @@ import { useNavigate } from 'react-router-dom'
 import { HamburgerIcon, CloseIcon, ChevronDownIcon, Search2Icon } from '@chakra-ui/icons';
 import {Link as Navlink} from 'react-router-dom'
 import React, { useState } from 'react';
+//  import {authLogout} from '../../redux/auth/auth.axtion'
+
 
 
 export default function Navbar() {
@@ -56,7 +53,7 @@ export default function Navbar() {
 
   const handleLogout=()=>{
 
-    
+    //  dispatch(authLogout)
     
   }
   
@@ -82,7 +79,7 @@ export default function Navbar() {
            
           </HStack>
           {
-            flag &&  <Flex >
+            isLogin &&  <Flex >
                         <Box display={{ base: 'none', md: 'flex' }} >
                             <Menu>
                                 <MenuButton as={Button} rightIcon={<ChevronDownIcon/>}>
@@ -147,7 +144,7 @@ export default function Navbar() {
               <MenuList>
                 <MenuItem >
                   {
-                    !flag && <Navlink to='/login' ><Button colorScheme='teal'>Login</Button></Navlink> 
+                    !isLogin && <Navlink to='/login' ><Button colorScheme='teal'>Login</Button></Navlink> 
                   }
                 </MenuItem>
                 <MenuItem>
@@ -156,7 +153,7 @@ export default function Navbar() {
                 <MenuDivider />
                 <MenuItem>
                     {
-                        flag && <Button colorScheme='red' onClick={()=>{setFlag(false)}} >Logout</Button>
+                        isLogin && <Button colorScheme='red' onClick={handleLogout} >Logout</Button>
                     } 
                 </MenuItem>
               </MenuList>
