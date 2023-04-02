@@ -1,0 +1,16 @@
+#productMain_PS.productMain_PS{
+
+    display: flex;
+    .productSidebar_PS{
+        border: 1px solid red;
+        padding: 10px;
+    }
+    .productrightTOP_PS{
+        display: flex;
+    }
+    .productrightBOTTOM_PS{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+    }
+
+}

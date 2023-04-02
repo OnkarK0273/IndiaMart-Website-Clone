@@ -3,6 +3,7 @@ import "./App.css";
 
 import Footer from "./Components/home/Footer";
 import Navbar from "./Components/home/Nav";
+import PlywoodProductPage from "./pages/Products/PlywoodProductPage";
 
 
 import AllRoutes from "./routes/AllRoutes";
