@@ -27,16 +27,10 @@ const LinkItems = [
   { name: "Settings", icon: FiSettings, toLink: "/settings" },
 ];
 const user  =JSON.parse(sessionStorage.getItem('user'))
-// function check(link) {
-//     if (link.name === "Admin" && user.role!=="super_admin" ) {
-//         return false;
-//     }
-//     else {
-//         return link;
-//     }
-// }
-  // const resLink = LinkItems.map(link=>check(link))
-  // console.log("resLink",resLink)
+
+
+
+
 export default function AdminNavbar({ children }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   
