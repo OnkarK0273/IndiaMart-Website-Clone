@@ -19,6 +19,7 @@ import Sign from "../pages/Sign";
 
 import Sell from '../pages/sell';
 import PlywoodProductPage from "../pages/Products/PlywoodProductPage";
+import SingleProduct from "../pages/Products/SingleProduct";
 
 export default function AllRoutes() {
   return (
@@ -29,6 +30,7 @@ export default function AllRoutes() {
         <Route path={"/login"} element={<Login />} />
         <Route path={"/sign"} element={<Sign />} />
         <Route path={"/plywood"} element={<PlywoodProductPage/>} />
+        <Route path={"/plywoodDetails"} element={<SingleProduct/>} />
         <Route path="*" element={<Heading h="55vh">Page not found</Heading>} />
         <Route
           path="/adminDashboard"

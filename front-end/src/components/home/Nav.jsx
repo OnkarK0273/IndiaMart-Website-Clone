@@ -198,7 +198,7 @@ export default function Navbar() {
                     </Button>
                     <Button  w='100%' size='lg' p='10px' columnGap={'10px'} onClick={()=>{handleSide('/')}} _hover={{ color:'teal' }}  >
                         <Icon   as={MdOutlineMessage} boxSize={5} /> 
-                        <Text  fontWeight={'bold'}>Messages</Text>
+                        <Text  fontWeight={'bold'}>Message</Text>
                     </Button>
                 </VStack>  
             </DrawerBody>          

@@ -9,19 +9,24 @@ import {
     Image,
     Button
 } from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
 
 const IMAGE =
     'https://images.unsplash.com/photo-1518051870910-a46e30d9db16?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80';
 
 export default function ProductBottomCard({ img, title, price, supplier, supplier_Addres, mob }) {
+    const navigate=useNavigate()
 
-    console.log(title)
+    const handleDetails=(el)=>{
+        navigate(el)
+    }
 
 
     return (
         <div>
             <Center py={12}>
                 <Box
+                    onClick={()=>{handleDetails('/plywoodDetails')}}
                     role={'group'}
                     p={6}
                     maxW={'330px'}
@@ -30,7 +35,8 @@ export default function ProductBottomCard({ img, title, price, supplier, supplie
                     boxShadow={'2xl'}
                     rounded={'lg'}
                     pos={'relative'}
-                    zIndex={1}>
+                    zIndex={1}
+                    cursor={'pointer'}>
                     <Box
                         rounded={'lg'}
                         mt={-12}
