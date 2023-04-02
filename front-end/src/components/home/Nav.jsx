@@ -46,6 +46,7 @@ export default function Navbar() {
   const navigate = useNavigate()
   const btnRef = React.useRef()
     
+  // handleside
   const handleSide = (val)=>{
     navigate(val)
     onClose()
