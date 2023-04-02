@@ -34,7 +34,7 @@ import { useNavigate } from 'react-router-dom'
 import { HamburgerIcon, CloseIcon, ChevronDownIcon, Search2Icon } from '@chakra-ui/icons';
 import {Link as Navlink} from 'react-router-dom'
 import React, { useState } from 'react';
-//  import {authLogout} from '../../redux/auth/auth.axtion'
+ import {authLogout} from '../../redux/auth/auth.action'
 
 
 
@@ -54,7 +54,7 @@ export default function Navbar() {
 
   const handleLogout=()=>{
 
-    //  dispatch(authLogout)
+      dispatch(authLogout())
     
   }
   
@@ -145,7 +145,8 @@ export default function Navbar() {
               <MenuList>
                 <MenuItem >
                   {
-                    !isLogin && <Navlink to='/login' ><Button colorScheme='teal'>Login</Button></Navlink> 
+                    // !isLogin &&
+                     <Navlink to='/login' ><Button colorScheme='teal'>Login</Button></Navlink> 
                   }
                 </MenuItem>
                 <MenuItem>
@@ -154,7 +155,8 @@ export default function Navbar() {
                 <MenuDivider />
                 <MenuItem>
                     {
-                        isLogin && <Button colorScheme='red' onClick={handleLogout} >Logout</Button>
+                        // isLogin &&
+                      <Button colorScheme='red' onClick={handleLogout} >Logout</Button>
                     } 
                 </MenuItem>
               </MenuList>
