@@ -73,12 +73,12 @@ export const postProduct=(prod)=>async(dispatch)=>{
 
 }
 
-export const getAdminData = (role)=>async(dispatch)=>{
+export const getAdminData = ()=>async(dispatch)=>{
 
     dispatch({type:types.GET_PRODUCT_LOADING})
 
     try {
-        let data = await getAdminsDataAPI(role)
+        let data = await getAdminsDataAPI()
         console.log(data)
         dispatch({type:types.GET_ADMINS_SUCCESS,payload:data})
     } catch (err) {
@@ -126,12 +126,12 @@ export const postAdminData = (adminObj)=>async(dispatch)=>{
     }
 }
 
-export const getUsersData = (role)=>async(dispatch)=>{
+export const getUsersData = ()=>async(dispatch)=>{
 
     dispatch({type:types.GET_PRODUCT_LOADING})
 
     try {
-        let data = await getUsersDataAPI(role)
+        let data = await getUsersDataAPI()
         console.log(data)
         dispatch({type:types.GET_USERS_SUCCESS,payload:data})
     } catch (err) {

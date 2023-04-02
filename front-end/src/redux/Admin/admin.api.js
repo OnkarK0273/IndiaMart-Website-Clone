@@ -44,11 +44,11 @@ export const postProductAPI = async(prod)=>{
 
 // get admin data 
 
-export const getAdminsDataAPI=async(role)=>{
+export const getAdminsDataAPI=async()=>{
      let res = await axios.get(`${baseURL}/admin/admindata`,{
         headers: {
             'Content-Type': 'application/json',
-            'token': localStorage.getItem('token')
+            'token': (sessionStorage.getItem('token'))
         }
      })
      return res?.data?.users
@@ -102,11 +102,13 @@ export const postAdminDataAPI=async(adminObj)=>{
 
 }
 
-export const getUsersDataAPI = async(role)=>{
+export const getUsersDataAPI = async()=>{
+    // const token = 
+    // console.log(token)
     let res = await axios.get(`${baseURL}/admin/usersdata`,{
         headers: {
             'Content-Type': 'application/json',
-            'token': localStorage.getItem('token')
+            'token': (sessionStorage.getItem('token'))
         }
     })
 

@@ -7,6 +7,8 @@ import { getAdminData, postAdminData, updateAdminData } from "../../redux/Admin/
 import { getAdminDataAPI } from "../../redux/Admin/admin.api";
 
 const AdminsPage = () => {
+const user = JSON.parse(sessionStorage.getItem('user'))
+
   const { admins } = useSelector((store) => store.product);
   const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -72,11 +74,29 @@ const update=()=>{
     dispatch(updateAdminData(payload))
 }
 useEffect(() => {
-    const role = "admin";
-    dispatch(getAdminData(role));
+    dispatch(getAdminData());
 }, [id,dispatch]);
 
-console.log("admin",admin)
+// console.log("admin",admin)
+
+if(user?.role==="admin"){
+  return (
+    <>
+    <Box width={{ base: "100%", md: "70%", lg: "80%" }}
+      border="1px solid black"
+      m="auto"
+      mr={0}
+      h={"100vh"}
+      mt={"-2rem"}
+    zIndex="10" left={"50%"} pt="50vh">
+      <Heading>
+        You are Authorised person
+      </Heading>
+    </Box>
+    </>
+  )
+
+}
   return (
     <Box
       width={{ base: "100%", md: "70%", lg: "80%" }}

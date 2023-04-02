@@ -2,7 +2,9 @@ import { Heading } from "@chakra-ui/react";
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 
+
 import AddProduct from "../pages/Admin/AddProduct";
+
 import AdminsPage from "../pages/Admin/AdminsPage";
 import Dashboard from "../pages/Admin/Dashboard";
 
@@ -14,6 +16,7 @@ import AddNewProduct from '../pages/Admin/AddNewProduct';
 
 
 import Home from "../pages/Home";
+
 import Login from "../pages/Login";
 import Sign from "../pages/Sign";
 

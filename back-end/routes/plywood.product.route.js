@@ -12,12 +12,14 @@ plywoodRoute.get("/", async (req, res) => {
   // console.log("token",token)
   const {wood_type,Color,order,sortBy,brand,page,limit,supplier} = req.query
   
-  //  console.log("headers",req.headers)
-  // const decoded = jwt.verify(token,process.env.SECRET_KEY)
-  // const userID = decoded.userID
+  const decoded = jwt.verify(token,process.env.SECRET_KEY)
+  const userID = decoded.userID
+  //  console.log("headers",userID)
 const query ={}
 
-
+if(userID){
+  query.userID=userID
+}
   if (wood_type) {
     query.wood_type = new RegExp(wood_type, "i");
   }
