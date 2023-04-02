@@ -1,17 +1,6 @@
-// import { Box } from '@chakra-ui/react'
-// import React from 'react'
 
-// const AdminCard = ({admin}) => {
-//     const {username,email,age} = admin
-//     const {firstname,lastname}=username
-//   return (
-//     <Box>
-//         {firstname}
-//     </Box>
-//   )
-// }
+import React, { useState } from 'react'
 
-// export default AdminCard
 
 import {
     Heading,
@@ -30,10 +19,18 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { deleteAdminData } from '../redux/Admin/admin.action';
   
-  export default function AdminCard({admin,open}) {
+  export default function AdminCard({admin,open,getUser}) {
       const navigate = useNavigate()
-    const {_id,username,email,age} = admin
+    const {_id,username,address,email,age,password,role,} = admin
     const {firstname,lastname}=username
+
+    const [user,setUsername] =useState(username)
+  
+  const [addres,setAddress] =useState(address)
+  const [Admin,setAdmin] =useState({
+    username,address,email,age,password,role
+})
+
     // console.log("product",admin)
     const dispatch = useDispatch()
 
@@ -88,7 +85,7 @@ import { deleteAdminData } from '../redux/Admin/admin.action';
               _focus={{
                   bg: 'gray.200',
                 }}
-                onClick={()=>{open();navigate(`/admin/${_id}`)}}
+                onClick={()=>{getUser(admin);open()}}
                 >
               Edit
             </Button>

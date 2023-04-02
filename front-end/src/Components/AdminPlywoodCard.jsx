@@ -12,7 +12,7 @@ import {
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { deleteProductProduct } from "../redux/Admin/admin.action";
+import { deleteProductProduct, getPlywoodProducts } from "../redux/Admin/admin.action";
 
 function AdminPlywoodCard({ product, open, getId }) {
   const {
@@ -160,7 +160,8 @@ function AdminPlywoodCard({ product, open, getId }) {
               _focus={{
                 bg: "red.500",
               }}
-              onClick={() => dispatch(deleteProductProduct(_id))}
+              onClick={() => {dispatch(deleteProductProduct(_id));
+              dispatch(getPlywoodProducts())}}
             >
               Delete
             </Button>

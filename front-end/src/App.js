@@ -14,7 +14,8 @@ function App() {
       {location.pathname === "/adminDashboard" ||
       location.pathname === "/addProduct" ||
       location.pathname === "/addNewProduct" ||
-      location.pathname === "/addProduct/*" ? (
+      location.pathname === "/addProduct" ||
+      location.pathname === "/admin" ? (
         false
       ) : (
         <Navbar />
@@ -28,7 +29,9 @@ function App() {
       {location.pathname === "/adminDashboard" ||
       location.pathname === "/addProduct" ||
       location.pathname === "/addNewProduct" ||
-      location.pathname === "/addProduct/:id" || location.pathname === "/sell" ? (
+      location.pathname === "/addProduct" ||
+      location.pathname === "/admin" ? (
+
         false
       ) : (
         <Footer />

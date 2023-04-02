@@ -9,11 +9,12 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  Select,
   useDisclosure,
 } from "@chakra-ui/react";
 import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import AdminPlywoodCard from "../../Components/AdminPlywoodCard";
 import {
   getPlywoodProducts,
@@ -33,10 +34,22 @@ import { baseURL } from "../../utils/variables";
 
 const AdminPlywoodPanel = () => {
   const [product, setProduct] = useState({});
+  const [searchparams , setsearchparams] = useSearchParams()
+  const initColor = searchparams.get('color')
+  const initPage = searchparams.get('page')
+  const initLimit = searchparams.get('limit')
 
+  const [Page,setPage]=useState(initPage || 1)
+  const [color,setColor]=useState( initColor ||"")
+  const [limit,setLimit]=useState( initLimit ||10)
+  const [token,setToken]=useState("")
+  
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { plyWoodProducts } = useSelector((store) => store.product);
+  const { plyWoodProducts ,totalPly} = useSelector((store) => store.product);
   console.log(plyWoodProducts);
+
+  // console.log(totalply);
+
 
   const navigate = useNavigate();
 
@@ -45,23 +58,48 @@ const AdminPlywoodPanel = () => {
     // handleSubmit(product)
     console.log(product);
   };
-
   const dispatch = useDispatch();
+  
   useEffect(() => {
-    dispatch(getPlywoodProducts());
-  }, [dispatch]);
-
-  const handleSubmit = () => {
-    console.log(product);
+    
+    const token=localStorage.getItem('token')
+    
+    setToken(token)
+    if(color || Page){
+      const getPlyParams={
+         params:{
+           Color:color,
+           page:Page,
+           limit:limit
+         }
+         
+        }
+        const headers={
+          'Content-Type': 'application/json',
+          'token': token
+        }
+        // console.log("headers",getPlyParams.params.Color)
+        setsearchparams(getPlyParams.params)
+        dispatch(getPlywoodProducts(color,Page,limit,headers));
+      }
+      
+      console.log("page",Page)
+      console.log("Total",totalPly)
+      console.log("plyTotal",Math.ceil(totalPly/limit))
+      
+    }, [color,Page,limit]);
+    
+    const handleSubmit = () => {
+      console.log(product);
     dispatch(updatePlywoodProducts(product));
   };
-
+  
   const getId = useCallback((prod) => {
     // setId(id)
     console.log("prod", prod);
     setProduct(prod);
   }, []);
-
+  
   return (
     <>
       <Modal isOpen={isOpen} onClose={onClose}>
@@ -237,10 +275,29 @@ const AdminPlywoodPanel = () => {
         </ModalContent>
       </Modal>
       <Box>
-        <Box>
-          <Flex justifyContent={"end"} alignItems={"right"} mr="1rem">
-            <Button onClick={() => navigate(`/addNewProduct`)}>
-              add plywood{" "}
+        <Box w="full" mr="1rem" position="sticky"
+            top="2rem" backgroundColor={"white"} zIndex="12">
+          <Flex
+            justifyContent={"space-between"}
+            alignItems={"right"}
+            flexWrap={"wrap"}
+          >
+            <Flex justifyContent={"start"} alignItems="center"  >
+
+            <Box bgColor="cyan.100">
+              <Select placeholder="Select color" onChange={(e)=>setColor(e.target.value)} >
+                <option value="brown">Brown</option>
+                <option value="black">Black</option>
+               
+              </Select>
+            </Box>
+            </Flex>
+            <Button
+              onClick={() => navigate(`/addNewProduct`)}
+              backgroundColor="cyan.300"
+              mt="1rem"
+            >
+              Add Plywood{" "}
             </Button>
           </Flex>
         </Box>
@@ -252,6 +309,11 @@ const AdminPlywoodPanel = () => {
             </Box>
           ))}
       </Box>
+      <Box postion="sticky" bottom="0rem" zIndex={"12"}>
+          <Button isDisabled={Page===1} onClick={()=>setPage(prev=>prev-1)}>prev</Button>
+           <Button isDisabled="true">{Page}</Button>
+          <Button isDisabled={Page===Math.ceil(totalPly/limit)} onClick={()=>setPage(prev=>prev+1)}>next</Button>
+      </Box>           
     </>
   );
 };
