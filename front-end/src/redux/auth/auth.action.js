@@ -1,3 +1,4 @@
+import { RESET_SELL } from "../sell/sell.type";
 import { loginAPI, signAPI } from "./auth.api";
 import * as types from "./auth.type";
 
@@ -24,4 +25,5 @@ export const Log = (payload) => async (dispatch) => {
 
 export const authLogout = () => (dispatch) => {
   dispatch({ type: types.RESET_AUTH });
+  dispatch({type:RESET_SELL})
 };

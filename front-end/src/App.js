@@ -3,6 +3,7 @@ import "./App.css";
 
 import Footer from "./Components/home/Footer";
 import Navbar from "./Components/home/Nav";
+import PlywoodProductPage from "./pages/Products/PlywoodProductPage";
 
 
 import AllRoutes from "./routes/AllRoutes";
@@ -14,8 +15,9 @@ function App() {
       {location.pathname === "/adminDashboard" ||
       location.pathname === "/addProduct" ||
       location.pathname === "/addNewProduct" ||
-      location.pathname === "/addProduct" ||
+      location.pathname === "/sell" ||
       location.pathname === "/admin" ? (
+
         false
       ) : (
         <Navbar />
@@ -29,8 +31,8 @@ function App() {
       {location.pathname === "/adminDashboard" ||
       location.pathname === "/addProduct" ||
       location.pathname === "/addNewProduct" ||
-      location.pathname === "/addProduct" ||
-      location.pathname === "/admin" ? (
+      location.pathname === "/admin" ||
+      location.pathname === "/sell"? (
 
         false
       ) : (

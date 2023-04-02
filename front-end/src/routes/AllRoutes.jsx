@@ -3,8 +3,8 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 
 
+import AddProduct from "../pages/Admin/AddProduct";
 
-import AddProduct from '../pages/Admin/AddProduct';
 import AdminsPage from "../pages/Admin/AdminsPage";
 import Dashboard from "../pages/Admin/Dashboard";
 
@@ -20,7 +20,8 @@ import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Sign from "../pages/Sign";
 
-import Sell from '../pages/sell'
+import Sell from '../pages/sell';
+import PlywoodProductPage from "../pages/Products/PlywoodProductPage";
 
 export default function AllRoutes() {
   return (
@@ -30,6 +31,7 @@ export default function AllRoutes() {
         <Route path={"/"} element={<Home />} />
         <Route path={"/login"} element={<Login />} />
         <Route path={"/sign"} element={<Sign />} />
+        <Route path={"/plywood"} element={<PlywoodProductPage/>} />
         <Route path="*" element={<Heading h="55vh">Page not found</Heading>} />
         <Route
           path="/adminDashboard"
