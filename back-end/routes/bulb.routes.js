@@ -6,15 +6,15 @@ require("dotenv").config();
 const auth = require("../middleware/auth.middleware");
 
 // Read
-bulbRouter.get("/", async (req, res) => {
+bulbRouter.get("/",auth, async (req, res) => {
   const { token } = req.headers;
   // console.log(token);
   const decoded = jwt.verify(token, process.env.SECRET_KEY);
 
   try {
     if (decoded) {
-      // const bulbs = await BulbModel.find({ userID: decoded.userID });
-      const bulbs = await BulbModel.find();
+      const bulbs = await BulbModel.find({ userID: decoded.userID });
+      // const bulbs = await BulbModel.find();
       res.status(200).send(bulbs);
     }
   } catch (err) {
