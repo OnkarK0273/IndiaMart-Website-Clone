@@ -45,6 +45,7 @@ export default function MainPage() {
           textAlign={"center"}
           flexDirection={"column"}
           justifyContent={'space-evenly'}
+          alignItems='center'
           w={{ md: "15%", lg: "10%" }}
           padding={"15px"}
           backgroundColor={"#3CB6FC"}
@@ -55,7 +56,9 @@ export default function MainPage() {
           h={"100vh"}
         >
           
-
+          <Box w='70%' onClick={()=>{navigate('/')}} cursor="pointer" >
+             <Avatar src='/images/2.png' size='ls'   />
+          </Box>
           
 
           <Tab
@@ -94,23 +97,7 @@ export default function MainPage() {
                 <Text> Products</Text>
             </VStack>
           </Tab>
-          <Tab
-            ref={orderRef}
-            mb={"5px"}
-            borderRadius={"5px"}
-            // transition={"0.8s"}
-            _selected={{
-              color: "black",
-              bg: "blue.200",
-              transform: "scale(1.05)",
-              transition: "0.8s",
-            }}
-          >
-            <VStack>
-                <Icon  as={MdAddBox} boxSize={6}  /> 
-                <Text>Add Product</Text>
-            </VStack>
-          </Tab>
+
           <Tab
             ref={customerRef}
             mb={"5px"}
@@ -154,16 +141,14 @@ export default function MainPage() {
         </TabList>
 
             {/* tab panals */}
-        <TabPanels pl={{ md: "32%", lg: "21%" }} minH='100vh' bg='whitesmoke'>
+        <TabPanels pl={{ md: "15%", lg: "10%" }}  bg='whitesmoke'>
           <TabPanel p={0}  >
             <Dashbord/>
           </TabPanel>
           <TabPanel p={0}>
             <Product/>
           </TabPanel>
-          <TabPanel p={0}>
-            <Add/>
-          </TabPanel>
+
           <TabPanel p={0}>
             < Setting/>
           </TabPanel>
@@ -192,7 +177,7 @@ export default function MainPage() {
           customerRef={customerRef}
           prodRef={prodRef}
         />
-        <Box>
+        <Box onClick={()=>{navigate('/')}} cursor="pointer" >
             <Image src='/images/2.png' alt='logo' w='50px'   />
         </Box>
         <Box>

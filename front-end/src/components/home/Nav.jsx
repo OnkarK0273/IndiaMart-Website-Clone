@@ -46,6 +46,7 @@ export default function Navbar() {
   const navigate = useNavigate()
   const btnRef = React.useRef()
     
+  // handleside
   const handleSide = (val)=>{
     navigate(val)
     onClose()
@@ -113,7 +114,7 @@ export default function Navbar() {
               justifyContent='space-evenly'
               pr='15px'
               display={{ base: 'none', md: 'flex' }}>
-                <Button flexDirection={'column'} size='lg' p='10px' _hover={{ color:'teal' }} >
+                <Button flexDirection={'column'} size='lg' p='10px' _hover={{ color:'teal' }} onClick={()=>{navigate('/sell')}} >
                      <Icon   as={MdSell} boxSize={5}  /> 
                      <Text  fontWeight={'bold'}>sell</Text>
                 </Button>
@@ -188,7 +189,7 @@ export default function Navbar() {
                         <Icon   as={MdHome} boxSize={5}  /> 
                         <Text  fontWeight={'bold'}>Home</Text>
                     </Button>
-                    <Button w='100%' size='lg' p='10px' columnGap={'10px'} onClick={()=>{handleSide('/')}} _hover={{ color:'teal' }} >
+                    <Button w='100%' size='lg' p='10px' columnGap={'10px'} onClick={()=>{handleSide('/sell')}} _hover={{ color:'teal' }} >
                         <Icon   as={MdSell} boxSize={5}  /> 
                         <Text  fontWeight={'bold'}>Sell</Text>
                     </Button>
