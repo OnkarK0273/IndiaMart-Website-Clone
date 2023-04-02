@@ -14,7 +14,7 @@ function App() {
       {location.pathname === "/adminDashboard" ||
       location.pathname === "/addProduct" ||
       location.pathname === "/addNewProduct" ||
-      location.pathname === "/addProduct/*" ? (
+      location.pathname === "/addProduct/*" || location.pathname === "/sell" ?  (
         false
       ) : (
         <Navbar />
