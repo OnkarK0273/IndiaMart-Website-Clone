@@ -3,8 +3,9 @@ require('dotenv').config()
 const admin_auth = (req,res,next)=>{
 
     const {token} = req.headers
-       try {
+    try {
         const decodedToken = jwt.verify(token,process.env.SECRET_KEY)
+        console.log(decodedToken)
         if(decodedToken){
             if(decodedToken.role==="admin"){
                 next()
