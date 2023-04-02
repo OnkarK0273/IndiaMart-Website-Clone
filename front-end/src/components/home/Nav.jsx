@@ -190,15 +190,15 @@ export default function Navbar() {
                     </Button>
                     <Button w='100%' size='lg' p='10px' columnGap={'10px'} onClick={()=>{handleSide('/')}} _hover={{ color:'teal' }} >
                         <Icon   as={MdSell} boxSize={5}  /> 
-                        <Text  fontWeight={'bold'}>sell</Text>
+                        <Text  fontWeight={'bold'}>Sell</Text>
                     </Button>
                     <Button  w='100%'  size='lg' p='10px' columnGap={'10px'} onClick={()=>{handleSide('/')}} _hover={{ color:'teal' }} >
                         <Icon  as={''} boxSize={5} /> 
-                        <Text  fontWeight={'bold'}>help</Text>
+                        <Text  fontWeight={'bold'}>Help</Text>
                     </Button>
                     <Button  w='100%' size='lg' p='10px' columnGap={'10px'} onClick={()=>{handleSide('/')}} _hover={{ color:'teal' }}  >
                         <Icon   as={MdOutlineMessage} boxSize={5} /> 
-                        <Text  fontWeight={'bold'}>masaage</Text>
+                        <Text  fontWeight={'bold'}>Messages</Text>
                     </Button>
                 </VStack>  
             </DrawerBody>          
