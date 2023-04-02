@@ -34,6 +34,7 @@ import { useNavigate } from 'react-router-dom'
 import { HamburgerIcon, CloseIcon, ChevronDownIcon, Search2Icon } from '@chakra-ui/icons';
 import {Link as Navlink} from 'react-router-dom'
 import React, { useState } from 'react';
+import { authLogout } from '../../redux/auth/auth.action';
 //  import {authLogout} from '../../redux/auth/auth.axtion'
 
 
@@ -54,7 +55,7 @@ export default function Navbar() {
 
   const handleLogout=()=>{
 
-    //  dispatch(authLogout)
+     dispatch(authLogout())
     
   }
   
