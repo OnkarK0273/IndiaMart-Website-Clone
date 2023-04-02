@@ -2,15 +2,23 @@
 import * as types from "./admin.action.type"
 import { deleteAdminDataAPI, deleteProductAPI, getAdminsDataAPI, getPlywoodAPI, getUsersDataAPI, postAdminDataAPI, postProductAPI, updateAdminDataAPI, updateProductAPI } from "./admin.api"
 
-export const getPlywoodProducts =()=>async (dispatch)=>{
+export const getPlywoodProducts =(color,Page,limit,headers)=>async (dispatch)=>{
      
     dispatch({type:types.GET_PRODUCT_LOADING})
-
+    
     try {
-        let data = await getPlywoodAPI()
+        // if(!color && !Page && !limit){
+        //      let data = await getPlywoodAPI()
+    
+        //     dispatch({type:types.GET_PRODUCT_SUCCESS,payload:data})
+           
+        // }else{
 
-        dispatch({type:types.GET_PRODUCT_SUCCESS,payload:data})
-        // console.log(data)
+            let data = await getPlywoodAPI(color,Page,limit,headers)
+    
+            dispatch({type:types.GET_PRODUCT_SUCCESS,payload:data})
+        // }
+        // console.log("data",data)
     } catch (err) {
         // console.log(err)
         dispatch({type:types.GET_PRODUCT_ERROR})

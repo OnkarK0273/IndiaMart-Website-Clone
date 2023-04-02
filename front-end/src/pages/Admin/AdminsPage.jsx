@@ -44,12 +44,13 @@ const AdminsPage = () => {
     //  console.log("admins",admin)
     
   const dispatch = useDispatch();
-
-  const getSingleAdmin = () =>{
-    getAdminDataAPI(id).then(res=>{setAdmin(res);setAddress(res?.address);setUsername(res?.username)})
-}
-
 //   
+const getUser = (user)=>{
+  // console.log(user)
+   setAdmin(user)
+   setAddress(user?.address)
+   setUsername(user?.username)
+  }
 const handleAddressChange=(e)=>{
     setAddress({...address,[e.target.name]:e.target.value})
 }
@@ -73,7 +74,6 @@ const update=()=>{
 useEffect(() => {
     const role = "admin";
     dispatch(getAdminData(role));
-    getSingleAdmin(id)
 }, [id,dispatch]);
 
 console.log("admin",admin)
@@ -82,6 +82,7 @@ console.log("admin",admin)
       width={{ base: "100%", md: "70%", lg: "80%" }}
       border="1px solid black"
       m="auto"
+      mt={"-2rem"}
       mr={0}
       top="0"
     zIndex="10"
@@ -91,7 +92,7 @@ console.log("admin",admin)
       </Flex>
       <Flex m={"1rem"} flexWrap={"wrap"} gap="2rem">
         {admins &&
-          admins?.map((admin) => <AdminCard key={admin._id} admin={admin} open={onOpen}/>)}
+          admins?.map((admin) => <AdminCard getUser={getUser}  key={admin._id} admin={admin} open={onOpen}/>)}
       </Flex>
       
 

@@ -45,7 +45,7 @@ import {
     );
   }
   
-  export default function StatsMainDashboard({plywood,admins,users,bulbs}) {
+  export default function StatsMainDashboard({totalPly,admins,users,bulbs}) {
     return (
       <Box maxW="5xl" mx={'auto'} pt={5} px={{ base: 2, sm: 12, md: 17 }} mt="0.4rem">
         <chakra.h1
@@ -58,7 +58,7 @@ import {
         <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 5, lg: 8 }}>
           <StatsCard
             title={'Plywoods'}
-            stat={plywood?.length}
+            stat={totalPly}
             icon={<RiProductHuntLine size={"4rem"}/>}
           />
           <StatsCard 

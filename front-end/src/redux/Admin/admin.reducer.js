@@ -5,6 +5,7 @@ const initalState = {
     isLoading: false,
     isError: true,
     plyWoodProducts: [],
+    totalPly:0,
     users: [],
     admins:[]
 }
@@ -25,7 +26,9 @@ export const reducer = (state = initalState, { type,payload }) => {
                 ...state,
                 isLoading:false,
                 isError:false,
-                plyWoodProducts:payload
+                plyWoodProducts:payload?.data,
+                totalPly:payload.totalPages
+
             }
         case types.DELETE_PRODUCT_SUCCESS:
             return {

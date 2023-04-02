@@ -19,6 +19,7 @@ const AddProduct = () => {
       width={{ base: "100%", md: "70%", lg: "80%" }}
       border="1px solid black"
       m="auto"
+      mt="-2rem"
       mr={0}
       top="0"
       zIndex="10"
@@ -28,7 +29,7 @@ const AddProduct = () => {
         <Box width={"full"} border="1px solid red">
 
           <Tabs size="md" variant="enclosed" colorScheme={"messenger"}>
-            <TabList>
+            <TabList position={"sticky"} top="0" backgroundColor={"white"} zIndex="12">
               <Tab>Plywoods</Tab>
               <Tab>Medicines</Tab>
               <Tab>Machines</Tab>

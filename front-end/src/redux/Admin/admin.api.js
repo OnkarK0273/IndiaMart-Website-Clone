@@ -2,19 +2,21 @@
 import axios from "axios"
 import { baseURL } from "../../utils/variables"
 
-export const getPlywoodAPI = async () => {
-    let res = await axios.get(`${baseURL}/plywood`, {
-        headers: {
-            'Content-Type': 'application/json',
-            'token': localStorage.getItem('token')
-        }
-    })
-    return res?.data?.data
+export const getPlywoodAPI = async (color="brown",Page=1,limit=10,headers) => {
+    // console.log("headers",color)
+//    if(!color && !Page && !limit){
+//        let res = await axios.get(`${baseURL}/plywood`)
+
+//        return res?.data
+//    }else{
+
+       let res = await axios.get(`${baseURL}/plywood?page=${Page}&limit=${limit}&Color=${color}`,{headers})
+       return res?.data
+//    }
+
+  
 }
 
-export const getSinglePlywoodAPI = async(id)=>{
-    let res = await axios.get(`${baseURL}/plywood/${id}`)
-}
 
 export  const updateProductAPI = async(prod)=>{
     // console.log(prod)
@@ -53,7 +55,7 @@ export const postProductAPI = async(prod)=>{
 // get admin data 
 
 export const getAdminsDataAPI=async(role)=>{
-     let res = await axios.get(`${baseURL}/admin/admindata?role=${role}`,{
+     let res = await axios.get(`${baseURL}/admin/admindata`,{
         headers: {
             'Content-Type': 'application/json',
             'token': localStorage.getItem('token')
@@ -111,7 +113,7 @@ export const postAdminDataAPI=async(adminObj)=>{
 }
 
 export const getUsersDataAPI = async(role)=>{
-    let res = await axios.get(`${baseURL}/admin/usersdata?${role}`,{
+    let res = await axios.get(`${baseURL}/admin/usersdata`,{
         headers: {
             'Content-Type': 'application/json',
             'token': localStorage.getItem('token')
