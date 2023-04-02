@@ -14,10 +14,10 @@ plywoodRoute.get("/", async (req, res) => {
   
   const decoded = jwt.verify(token,process.env.SECRET_KEY)
   const userID = decoded.userID
-  //  console.log("headers",userID)
+  //  console.log("headers",token)
 const query ={}
 
-if(userID){
+if (decoded.role=="user" && userID){
   query.userID=userID
 }
   if (wood_type) {
@@ -33,7 +33,7 @@ if(userID){
     query.supplier = new RegExp(supplier, "i");
   }
 
-  //  console.log(page,limit ,userID)
+   console.log(page,limit ,userID)
    
    const sort = {};
    if (sortBy) sort[sortBy] = order;
@@ -53,10 +53,13 @@ if(userID){
       const plywoodProducts = await PlywoodProductModel.find(options);
     const total=await PlywoodProductModel.find()
     res.status(200).send({ data: plywoodProducts ,totalPages:total.length});
-    }
+  }else{
+    
     const plywoodProducts = await PlywoodProductModel.find(query,null,options);
-    const total=await PlywoodProductModel.find()
-    res.status(200).send({ data: plywoodProducts ,totalPages:total.length});
+    // console.log(plywoodProducts)
+      const total=await PlywoodProductModel.find()
+      res.status(200).send({ data: plywoodProducts ,totalPages:total.length});
+    }
 
   } catch (err) {
     res.status(200).send({ error: err.message });
