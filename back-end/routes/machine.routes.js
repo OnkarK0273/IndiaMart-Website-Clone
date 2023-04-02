@@ -47,7 +47,7 @@ machineRouter.patch("/update/:machineID", auth, async (req, res) => {
   try {
     await MachineModel.findByIdAndUpdate({ _id: machineID }, data);
     res.status(200).send({ msg: "machine details has been updated" });
-  } catch (error) {
+  } catch (err) {
     res.status(400).send({ msg: err.message });
   }
 });

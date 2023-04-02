@@ -10,7 +10,7 @@ import {
   ModalOverlay,
   useDisclosure,
 } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -25,25 +25,27 @@ import {
 import AdminMachinesCard from "../../Components/AdminMachinesCard";
 
 const AdminMachinesPanel = () => {
-  const [product, setProduct] = useState({
-    title: "",
-    price: 0,
-    desc: "",
-    Machine_Type: "",
-    desc_2: "",
-    desc_3: "",
-    Machine_Gauges: "",
-    supplier: "",
-    supplier_Addres: "",
-    cl: "",
-    mob: "",
-    contact: "",
-    img1: "",
-    img2: "",
-  });
+  // const [product, setProduct] = useState({
+  //   title: "",
+  //   price: 0,
+  //   desc: "",
+  //   Machine_Type: "",
+  //   desc_2: "",
+  //   desc_3: "",
+  //   Machine_Gauges: "",
+  //   supplier: "",
+  //   supplier_Addres: "",
+  //   cl: "",
+  //   mob: "",
+  //   contact: "",
+  //   img1: "",
+  //   img2: "",
+  // });
 
-  const { id } = useParams();
-  console.log("id", id);
+  const [product, setProduct] = useState({});
+
+  // const { id } = useParams();
+  // console.log("id", id);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { machins } = useSelector((store) => store.machine);
   console.log("Machines", machins);
@@ -56,25 +58,31 @@ const AdminMachinesPanel = () => {
     console.log(product);
   };
 
-  const getProduct = () => {
-    axios
-      .get(`${baseURL}/machines/${id}`)
-      .then((res) => {
-        setProduct(res.data.data);
-      })
-      .catch((err) => console.log(err));
-  };
-
   const dispatch = useDispatch();
   useEffect(() => {
-    getProduct();
+    // getProduct();
     dispatch(getMachine());
   }, [dispatch]);
 
   const handleSubmit = () => {
-    console.log(product);
+    console.log("machines", product);
     dispatch(updateMachine(product));
   };
+
+  // const getProduct = () => {
+  //   axios
+  //     .get(`${baseURL}/machines/${id}`)
+  //     .then((res) => {
+  //       setProduct(res.data.data);
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
+
+  const getId = useCallback((prod) => {
+    // setId(id)
+    console.log("prod", prod);
+    setProduct(prod);
+  }, []);
 
   return (
     <>
@@ -262,7 +270,7 @@ const AdminMachinesPanel = () => {
         {machins &&
           machins?.map((el) => (
             <Box key={el._id}>
-              <AdminMachinesCard product={el} open={onOpen} />
+              <AdminMachinesCard product={el} getId={getId} open={onOpen} />
             </Box>
           ))}
       </Box>

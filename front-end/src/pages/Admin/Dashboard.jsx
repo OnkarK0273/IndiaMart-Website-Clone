@@ -12,19 +12,19 @@ import StatsMainDashboard from "./StatsMainDashboard";
 import { getBulb } from "../../redux/BulbAdmin/bulbadmin.action";
 
 const Dashboard = () => {
-  const { plyWoodProducts, admins, users } = useSelector(
+  const { plyWoodProducts, admins, users ,totalPly} = useSelector(
     (store) => store.product
   );
   const { bulbs } = useSelector((store) => store.bulb);
-  console.log(plyWoodProducts);
+  console.log("totalPly",totalPly);
   const dispatch = useDispatch();
 
   // charts
   const data = [
     ["Categories", "No of Products"],
-    ["Plywood", plyWoodProducts.length],
+    ["Plywood", totalPly],
     ["Medicines", 2],
-    ["Bulbs", bulbs.length],
+    ["Bulbs", bulbs?.length],
     ["Machines", 2],
   ];
   const options = {
@@ -34,7 +34,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     dispatch(getPlywoodProducts());
-    dispatch(getAdminData());
+    dispatch(getAdminData("admin"));
     dispatch(getUsersData("user"));
     dispatch(getBulb());
   }, []);
@@ -50,7 +50,7 @@ const Dashboard = () => {
         textAlign={"center"}
       >
         <StatsMainDashboard
-          plywood={plyWoodProducts}
+          totalPly={totalPly}
           users={users}
           admins={admins}
           bulbs={bulbs}

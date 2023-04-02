@@ -1,4 +1,5 @@
 
+
 import { legacy_createStore, combineReducers, compose, applyMiddleware } from "redux";
 import authReducer from './auth/auth.reducer'
 import sellReducer from "./sell/sell.reducer"
@@ -12,13 +13,11 @@ import { bulbReducer } from "./BulbAdmin/bulbadmin.reducer";
 import { machineReducer } from "./MachineAdmin/machineadmin.reducer";
 
 const root_reducer = combineReducers({
-	product: productReducer,
 	authReducer,
 	sellReducer,
   product: productReducer,
   bulb: bulbReducer,
   machine: machineReducer,
-  
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
