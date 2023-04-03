@@ -20,7 +20,7 @@ This project was built using the following technologies:
  - Onkar Kalsannawar
  - Suman Biswas
  - Prince Sharma
- - akash rajendra fulari
+ - Akash Rajendra Fulari
  - Papri Saha
 
 <h3>Features:</h3>
