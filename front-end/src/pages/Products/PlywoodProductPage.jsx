@@ -5,19 +5,25 @@ import ProductTopCard from './ProductTopCard'
 import ProductBottomCard from './ProductBottomCard'
 import axios from 'axios'
 import { baseURL } from '../../utils/variables'
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 
 const PlywoodProductPage = () => {
 
   const [data, setData] = useState([])
 
-  axios.get(`${baseURL}/plywood`)
+
+  useEffect(()=>{
+    axios.get(`${baseURL}/plywood`)
     .then((res) => {
-      setData(res.data.data)
+      setData(res.data)
     })
     .catch((err) => {
       console.log(err)
     })
+
+  },[])
+
+ 
 
   console.log(data)
 

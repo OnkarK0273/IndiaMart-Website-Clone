@@ -33,10 +33,8 @@ import { MdSell,MdOutlineMessage,MdHome } from 'react-icons/md'
 import { useNavigate } from 'react-router-dom'
 import { HamburgerIcon, CloseIcon, ChevronDownIcon, Search2Icon } from '@chakra-ui/icons';
 import {Link as Navlink} from 'react-router-dom'
-import React, { useState } from 'react';
-
-import { authLogout } from '../../redux/auth/auth.action';
-//  import {authLogout} from '../../redux/auth/auth.axtion'
+import React, { useState,useEffect } from 'react';
+ import {authLogout} from '../../redux/auth/auth.action'
 
 
 
@@ -47,6 +45,7 @@ export default function Navbar() {
   const {error,isLogin} = useSelector((store)=>store.authReducer)
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const [name,setName] = useState('')
   const btnRef = React.useRef()
     
   // handleside
@@ -62,6 +61,17 @@ export default function Navbar() {
 
     
   }
+
+  useEffect(()=>{
+
+    const user = JSON.parse(sessionStorage.getItem("user"))
+    if(user){
+      setName(user.username.firstname + " " + user.username.lastname)
+
+    }
+
+
+  },[isLogin])
   
 
   return (
@@ -142,9 +152,10 @@ export default function Navbar() {
                 minW={0}>
                 <Avatar
                   size={'sm'}
-                  src={
-                    'https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9'
-                  }
+                  name={name} 
+                  // src={
+                  //   'https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9'
+                  // }
                 />
               </MenuButton>
               <MenuList>

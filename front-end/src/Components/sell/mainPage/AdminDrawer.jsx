@@ -61,17 +61,7 @@ const AdminDrawer = ({
             >
               Products
             </Box>
-            <Box
-              mt={"20px"}
-              p={"10px"}
-              onClick={() => {
-                orderRef.current.click();
-                onClose();
-              }}
-              _hover={{ backgroundColor: "blue.200" }}
-            >
-              Add Product
-            </Box>
+         
             <Box
               mt={"20px"}
               p={"10px"}
