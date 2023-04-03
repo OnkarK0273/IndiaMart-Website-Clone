@@ -9,13 +9,13 @@ export const getPlywoodAPI = async (color="brown",Page=1,limit=10,order="asc",pr
             'token': sessionStorage.getItem('token')
         }
        })
-       console.log(res.data)
+    //    console.log(res)
        return res?.data
 }
 
 
 export  const updateProductAPI = async(prod)=>{
-    console.log(prod)
+    // console.log(prod)
     let res = await axios.patch(`${baseURL}plywood/update/${prod._id}`,prod,{
         headers: {
             'Content-Type': 'application/json',

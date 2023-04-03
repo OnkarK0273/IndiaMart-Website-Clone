@@ -20,7 +20,7 @@ import PlyUpdate from "./AddNewProduct";
 const AdminMedicinesPanel = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { plyWoodProducts } = useSelector((store) => store.product);
-  console.log(plyWoodProducts);
+  // console.log(plyWoodProducts);
 
   const dispatch = useDispatch();
   useEffect(() => {

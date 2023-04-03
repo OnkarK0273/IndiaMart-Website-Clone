@@ -48,14 +48,14 @@ const AdminMachinesPanel = () => {
   // console.log("id", id);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { machins } = useSelector((store) => store.machine);
-  console.log("Machines", machins.data);
+  // console.log("Machines", machins.data);
 
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     setProduct({ ...product, [e.target.name]: e.target.value });
     // handleSubmit(product)
-    console.log(product);
+    // console.log(product);
   };
 
   const dispatch = useDispatch();
@@ -65,7 +65,7 @@ const AdminMachinesPanel = () => {
   }, [dispatch]);
 
   const handleSubmit = () => {
-    console.log("machines", product?.data);
+    // console.log("machines", product?.data);
     dispatch(updateMachine(product));
   };
 
@@ -80,7 +80,7 @@ const AdminMachinesPanel = () => {
 
   const getId = useCallback((prod) => {
     // setId(id)
-    console.log("prod", prod);
+    // console.log("prod", prod);
     setProduct(prod);
   }, []);
 

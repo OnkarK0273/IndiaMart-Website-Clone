@@ -58,7 +58,7 @@ export const postProduct=(prod)=>async(dispatch)=>{
 
         dispatch({type:types.POST_PRODUCT_SUCCESS})
         dispatch(getPlywoodProducts())
-        console.log(data)
+        // console.log(data)
     } catch (err) {
         // console.log(err)
         dispatch({type:types.GET_PRODUCT_ERROR})
@@ -72,7 +72,7 @@ export const getAdminData = ()=>async(dispatch)=>{
 
     try {
         let data = await getAdminsDataAPI()
-        console.log(data)
+        // console.log(data)
         dispatch({type:types.GET_ADMINS_SUCCESS,payload:data})
     } catch (err) {
         dispatch({type:types.GET_PRODUCT_ERROR})
@@ -85,7 +85,7 @@ export const updateAdminData = (admin)=>async(dispatch)=>{
 
     try {
         let data = await updateAdminDataAPI(admin)
-        console.log("data",data)
+        // console.log("data",data)
         // dispatch({type:types.GET_ADMINS_SUCCESS,payload:data})
         dispatch(getAdminData("admin"))
     } catch (err) {
@@ -98,7 +98,7 @@ export const deleteAdminData = (id)=>async(dispatch)=>{
 
     try {
         let data = await deleteAdminDataAPI(id)
-        console.log("data",data)
+        // console.log("data",data)
         // dispatch({type:types.GET_ADMINS_SUCCESS,payload:data})
         dispatch(getAdminData("admin"))
     } catch (err) {
@@ -111,7 +111,7 @@ export const postAdminData = (adminObj)=>async(dispatch)=>{
 
     try {
         let data = await postAdminDataAPI(adminObj)
-        console.log("data",data)
+        // console.log("data",data)
         // dispatch({type:types.GET_ADMINS_SUCCESS,payload:data})
         dispatch(getAdminData("admin"))
     } catch (err) {
@@ -125,7 +125,7 @@ export const getUsersData = ()=>async(dispatch)=>{
 
     try {
         let data = await getUsersDataAPI()
-        console.log(data)
+        // console.log(data)
         dispatch({type:types.GET_USERS_SUCCESS,payload:data})
     } catch (err) {
         dispatch({type:types.GET_PRODUCT_ERROR})
