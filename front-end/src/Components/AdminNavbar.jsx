@@ -128,8 +128,7 @@ const NavItem = ({ icon, children, ...rest }) => {
 };
 
 const MobileNav = ({ onOpen, ...rest }) => {
-  const user = JSON.parse(sessionStorage.getItem("user"));
-  console.log(user.username)
+  const user = JSON.parse(sessionStorage.getItem("user"))
   const navigate = useNavigate()
   return (
     <Flex

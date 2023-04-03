@@ -38,6 +38,7 @@ import React, { useState,useEffect } from 'react';
 
 
 
+
 export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [flag,setFlag] = useState(false)
@@ -55,7 +56,9 @@ export default function Navbar() {
 
   const handleLogout=()=>{
 
-      dispatch(authLogout())
+
+     dispatch(authLogout())
+
     
   }
 
