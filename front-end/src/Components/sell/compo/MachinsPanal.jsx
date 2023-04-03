@@ -26,7 +26,7 @@ export default function MachinsPanal() {
 
     {/* product cards */}
         {
-            machins?.map((el) => (
+            machins?.data?.map((el) => (
             <Box key={el._id}>
             <MachinesCard product={el} open={onOpen} />
             </Box>

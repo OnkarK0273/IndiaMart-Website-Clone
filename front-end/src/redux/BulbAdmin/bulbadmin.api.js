@@ -8,8 +8,8 @@ export const getBulbAPI = async () => {
       token:sessionStorage.getItem('token')  
      },
   });
-  console.log("bulb", res.data);
-  return res.data;
+  console.log("bulb", res?.data);
+  return res?.data;
 };
 
 export const updateBulbAPI = async (prod) => {
