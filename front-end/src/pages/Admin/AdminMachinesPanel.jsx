@@ -48,7 +48,7 @@ const AdminMachinesPanel = () => {
   // console.log("id", id);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { machins } = useSelector((store) => store.machine);
-  console.log("Machines", machins);
+  console.log("Machines", machins.data);
 
   const navigate = useNavigate();
 
@@ -65,7 +65,7 @@ const AdminMachinesPanel = () => {
   }, [dispatch]);
 
   const handleSubmit = () => {
-    console.log("machines", product);
+    console.log("machines", product?.data);
     dispatch(updateMachine(product));
   };
 
@@ -268,7 +268,7 @@ const AdminMachinesPanel = () => {
         </Box>
 
         {machins &&
-          machins?.map((el) => (
+          machins?.data?.map((el) => (
             <Box key={el._id}>
               <AdminMachinesCard product={el} getId={getId} open={onOpen} />
             </Box>

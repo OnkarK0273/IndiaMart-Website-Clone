@@ -255,7 +255,7 @@ const AdminBulbsPanel = () => {
         </Box>
 
         {bulbs &&
-          bulbs?.map((el) => (
+          bulbs?.data?.map((el) => (
             <Box key={el._id}>
               <AdminBulbsCard product={el} open={onOpen} />
             </Box>
