@@ -17,8 +17,8 @@ export const getMachine = () => async (dispatch) => {
   try {
     let data = await getMachineAPI();
 
-    dispatch({ type: types.GET_MACHINE_SUCCESS, payload: data });
-    console.log("Machine", data);
+    // console.log("Machine", data);
+    dispatch({ type: types.GET_MACHINE_SUCCESS, payload: data?.data });
   } catch (err) {
     // console.log(err)
     dispatch({ type: types.GET_MACHINE_ERROR });

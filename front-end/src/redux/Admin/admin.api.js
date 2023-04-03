@@ -2,8 +2,8 @@ import axios from "axios";
 import { baseURL } from "../../utils/variables";
 
 
-export const getPlywoodAPI = async (color="brown",Page=1,limit=10,headers) => {
-       let res = await axios.get(`${baseURL}plywood?page=${Page}&limit=${limit}&Color=${color}`,{
+export const getPlywoodAPI = async (color="brown",Page=1,limit=10,order,price) => {
+       let res = await axios.get(`${baseURL}plywood?page=${Page}&limit=${limit}&Color=${color}&price=${price}&order=${order}`,{
         headers: {
             'Content-Type': 'application/json',
             'token': sessionStorage.getItem('token')

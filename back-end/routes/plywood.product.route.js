@@ -10,13 +10,16 @@ plywoodRoute.get("/", async (req, res) => {
 
   const {token} = req.headers
   // console.log("token",token)
-  const {wood_type,Color,order,sortBy,brand,page,limit,supplier} = req.query
+  const {wood_type,Color,order,price,sortBy,brand,page,limit,supplier} = req.query
   
   const decoded = jwt.verify(token,process.env.SECRET_KEY)
   const userID = decoded.userID
   //  console.log("headers",token)
 const query ={}
 
+if(price){
+  query.price={$gte:price}
+}
 if (decoded.role=="user" && userID){
   query.userID=userID
 }
