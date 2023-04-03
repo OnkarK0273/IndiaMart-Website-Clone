@@ -8,7 +8,7 @@ export const getMachineAPI = async () => {
       token: sessionStorage.getItem('token')  ,
        },
   });
-  console.log("machine", res.data.data);
+  console.log("machine", res?.data);
   return res?.data;
 };
 
