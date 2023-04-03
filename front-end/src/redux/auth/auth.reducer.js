@@ -8,7 +8,7 @@ const init = {
     token:token || '',
     error:null,
     isSign:false,
-    isLogin:false ,
+    isLogin:token?true:false ,
     
 }
 
