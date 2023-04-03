@@ -7,14 +7,15 @@ import {
     Text,
     Stack,
     Image,
-    Button
+    Button,
+    useToast
 } from '@chakra-ui/react';
 
 const IMAGE =
     'https://images.unsplash.com/photo-1518051870910-a46e30d9db16?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80';
 
 export default function ProductBottomCard({ img, title, price, supplier, supplier_Addres, mob }) {
-
+const toast= useToast()
     console.log(title)
 
 
@@ -77,7 +78,12 @@ export default function ProductBottomCard({ img, title, price, supplier, supplie
                         <Text color={'gray.500'} fontSize={'sm'} textTransform={'uppercase'}>
                             {mob}
                         </Text>
-                        <Button>
+                        <Button onClick={()=> {toast({
+          title: "Supplier will contact you ASAP!",
+          status: 'success',
+          duration: 1000,
+          isClosable: true,
+        })}}>
                             Contact Supplier
                         </Button>
                     </Stack>

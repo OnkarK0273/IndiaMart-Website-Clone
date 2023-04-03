@@ -6,21 +6,33 @@ import ProductBottomCard from './ProductBottomCard'
 import axios from 'axios'
 import { baseURL } from '../../utils/variables'
 import { useState,useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { getPlywoodProducts } from '../../redux/Admin/admin.action'
 
 const PlywoodProductPage = () => {
 
   const [data, setData] = useState([])
 
+  // const dispatch = useDispatch()
 
+  // const { plyWoodProducts} = useSelector(
+  //   (store) => store.product
+  // );
   useEffect(()=>{
-    axios.get(`${baseURL}/plywood`)
+    axios.get(`${baseURL}plywood`,{
+      headers:{
+        "Content-Type":"application/json",
+        "token":sessionStorage.getItem('token')
+      }
+    })
     .then((res) => {
-      setData(res.data)
+      setData(res.data.data)
     })
     .catch((err) => {
       console.log(err)
     })
 
+// dispatch(getPlywoodProducts())
   },[])
 
  
@@ -84,7 +96,7 @@ const PlywoodProductPage = () => {
         </div>
         <div className='productrightBOTTOM_PS'>
           {
-            data.map((el) => (
+            data?.map((el) => (
               <ProductBottomCard
                 img={el.img1} title={el.title} price={el.price} supplier={el.supplier} supplier_Addres={el.supplier_Addres} mob={el.mob}
               />
