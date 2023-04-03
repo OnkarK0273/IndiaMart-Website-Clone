@@ -139,7 +139,7 @@ function AdminPlywoodCard({ product, open, getId }) {
               rounded={"full"}
               bg="gray.200"
               onClick={() => {
-                getId(prod);
+                getId(product);
                 open();
               }}
             >
