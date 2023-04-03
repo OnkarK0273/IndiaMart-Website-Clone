@@ -6,8 +6,8 @@ export const getBulbs = (headers)=> async (dispatch)=>{
     dispatch({type:types.LOADING})
     try{
         let res = await getBulbsAPI(headers)
-      
-        dispatch({type:types.GET_BULBS,payload:res})
+        console.log(res)
+        dispatch({type:types.GET_BULBS,payload:res.data})
 
     }catch(err){
         dispatch({type:types.ERROR})
@@ -20,7 +20,7 @@ export const getPlywoods = (headers)=> async (dispatch)=>{
     dispatch({type:types.LOADING})
     try{
         let res = await getPlywoodAPI(headers)
-        
+        console.log(res)
         dispatch({type:types.GET_PLYWOOD,payload:res.data})
 
     }catch(err){
@@ -34,8 +34,8 @@ export const getMachins = (headers)=> async (dispatch)=>{
     dispatch({type:types.LOADING})
     try{
         let res = await getMachinsAPI(headers)
-        
-        dispatch({type:types.GET_MACHINS,payload:res})
+        console.log(res)
+        dispatch({type:types.GET_MACHINS,payload:res.data})
 
     }catch(err){
         dispatch({type:types.ERROR})
