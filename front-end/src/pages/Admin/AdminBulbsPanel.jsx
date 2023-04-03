@@ -39,10 +39,10 @@ const AdminBulbsPanel = () => {
   });
 
   const { id } = useParams();
-  console.log("id", id);
+  // console.log("id", id);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { bulbs } = useSelector((store) => store.bulb);
-  console.log("Bulbs", bulbs);
+  // console.log("Bulbs", bulbs);
 
   const navigate = useNavigate();
 

@@ -9,9 +9,9 @@ export default function Dashbord() {
   const {token} = useSelector((store)=>store.authReducer)
   const dispatch = useDispatch()
 
-  console.log("plyWoods",plyWoods)
-  console.log('bulbs',bulbs)
-  console.log('machins',machins)
+  // console.log("plyWoods",plyWoods)
+  // console.log('bulbs',bulbs)
+  // console.log('machins',machins)
 
   useEffect(()=>{
 

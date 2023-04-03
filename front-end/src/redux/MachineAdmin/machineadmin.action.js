@@ -63,7 +63,7 @@ export const postMachine = (prod) => async (dispatch) => {
 
     dispatch({ type: types.POST_MACHINE_SUCCESS });
     dispatch(getMachine());
-    console.log(data);
+    // console.log(data);
   } catch (err) {
     // console.log(err)
     dispatch({ type: types.GET_MACHINE_ERROR });
@@ -75,7 +75,7 @@ export const getAdminMachineData = (role) => async (dispatch) => {
 
   try {
     let data = await getMachineDataAPI(role);
-    console.log(data);
+    // console.log(data);
     dispatch({ type: types.GET_ADMINS_MACHINE_SUCCESS, payload: data });
   } catch (err) {
     dispatch({ type: types.GET_MACHINE_ERROR });
@@ -87,7 +87,7 @@ export const updateAdminMachineData = (admin) => async (dispatch) => {
 
   try {
     let data = await updateAdminMachineDataAPI(admin);
-    console.log("data", data);
+    // console.log("data", data);
     // dispatch({type:types.GET_ADMINS_SUCCESS,payload:data})
     dispatch(getAdminMachineData("admin"));
   } catch (err) {
@@ -100,7 +100,7 @@ export const deleteAdminMachineData = (id) => async (dispatch) => {
 
   try {
     let data = await deleteAdminMachineDataAPI(id);
-    console.log("data", data);
+    // console.log("data", data);
     // dispatch({type:types.GET_ADMINS_SUCCESS,payload:data})
     dispatch(getAdminMachineData("admin"));
   } catch (err) {
@@ -113,7 +113,7 @@ export const postAdminData = (adminObj) => async (dispatch) => {
 
   try {
     let data = await postAdminMachineDataAPI(adminObj);
-    console.log("data", data);
+    // console.log("data", data);
     // dispatch({type:types.GET_ADMINS_SUCCESS,payload:data})
     dispatch(getAdminMachineData("admin"));
   } catch (err) {
@@ -126,7 +126,7 @@ export const getUsersData = (role) => async (dispatch) => {
 
   try {
     let data = await getUsersMachineDataAPI(role);
-    console.log(data);
+    // console.log(data);
     dispatch({ type: types.GET_USERS_MACHINE_SUCCESS, payload: data });
   } catch (err) {
     dispatch({ type: types.GET_MACHINE_ERROR });

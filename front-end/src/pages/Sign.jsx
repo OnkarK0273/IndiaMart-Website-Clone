@@ -28,7 +28,7 @@ export default function Sign() {
   const {error,isSign} = useSelector((store)=>store.authReducer)
   const navigate = useNavigate();
   const toast = useToast()
-  console.log(error,isSign)
+  // console.log(error,isSign)
   
   const onsubmit = ()=>{
     const payload ={

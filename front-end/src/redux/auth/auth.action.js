@@ -15,7 +15,7 @@ export const Signin = (payload) => async (dispatch) => {
 export const Log = (payload) => async (dispatch) => {
   try {
     const res = await loginAPI(payload);
-    console.log(res);
+    // console.log(res);
     dispatch({ type: types.LOGIN, payload: res });
   } catch (err) {
     console.log(err);
