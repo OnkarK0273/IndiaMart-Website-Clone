@@ -1,6 +1,6 @@
 <h1>IndiaMART  - Clone </h1>
 
-![my airtable app](https://user-images.githubusercontent.com/106386112/210106279-bd893f86-067a-4027-994c-7eb7740275d1.png)
+![IndiaMART](https://user-images.githubusercontent.com/106386112/229416539-b531af13-9d9f-4412-9ab4-4aa68ebc29d1.png)
 
 IndiaMART is a leading B2B e-commerce company in India that connects suppliers with buyers. It trades almost everything from apparel, home furniture to electronics, and building equipment.
 
