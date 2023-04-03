@@ -172,7 +172,7 @@ export default function BulbsPanal() {
         </Box>
     {/* product cards */}
         {
-            bulbs?.data?.map((el) => (
+            bulbs?.map((el) => (
             <Box key={el._id}>
             <BulbsCard product={el} setDetails={setDetails} />
             </Box>

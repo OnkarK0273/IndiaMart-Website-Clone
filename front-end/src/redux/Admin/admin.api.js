@@ -9,7 +9,7 @@ export const getPlywoodAPI = async (color="brown",Page=1,limit=10,order="asc",pr
             'token': sessionStorage.getItem('token')
         }
        })
-       console.log(res.data)
+       console.log(res)
        return res?.data
 }
 

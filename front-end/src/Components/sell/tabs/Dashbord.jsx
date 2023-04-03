@@ -10,8 +10,8 @@ export default function Dashbord() {
   const dispatch = useDispatch()
 
   console.log("plyWoods",plyWoods)
-  console.log('bulbs',bulbs.data)
-  console.log('machins',machins.data)
+  console.log('bulbs',bulbs)
+  console.log('machins',machins)
 
   useEffect(()=>{
 
@@ -36,15 +36,15 @@ export default function Dashbord() {
                 <Heading>PlyWoods</Heading>
               </Box>
               <Box>
-                <Heading color={'blue.400'} size='4xl'>{machins?.data?.length}</Heading>
+                <Heading color={'blue.400'} size='4xl'>{machins?.length}</Heading>
                 <Heading>Machins</Heading>
               </Box>
               <Box>
-                <Heading color={'blue.300'} size='4xl'>{bulbs?.data?.length}</Heading>
+                <Heading color={'blue.300'} size='4xl'>{bulbs?.length}</Heading>
                 <Heading>Bulbs</Heading>
               </Box>
               <Box>
-                <Heading color={'blue.200'} size='4xl'>{plyWoods?.length+machins?.data?.length+bulbs?.data?.length}</Heading>
+                <Heading color={'blue.200'} size='4xl'>{plyWoods?.length+machins?.length+bulbs?.length}</Heading>
                 <Heading>Total</Heading>
               </Box>
 
