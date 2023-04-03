@@ -6,6 +6,23 @@ IndiaMART is a leading B2B e-commerce company in India that connects suppliers w
 
 <h3>Website Link : https://martmate.vercel.app/ </h3>
 
+## Technologies Used
+This project was built using the following technologies:
+
+- React: A JavaScript library for building user interfaces
+- Redux: A state management library for React applications
+- Chakra UI: A library of UI components for React applications that follows the design principles of the Chakra design system
+- MongoDB: it is Non-Sql DB to store the Data
+- expressJS : it is backend server it can handle all the CRUD operation
+
+## Completed By 5 developers in five days
+
+ - Onkar Kalsannawar
+ - Suman Biswas
+ - Prince Sharma
+ - akash rajendra fulari
+ - Papri Saha
+
 <h3>Features:</h3>
 
 <h4>Backend + Frontend</h5>
