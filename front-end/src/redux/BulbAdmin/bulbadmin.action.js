@@ -12,8 +12,8 @@ export const getBulb = () => async (dispatch) => {
   try {
     let data = await getBulbAPI();
 
-    dispatch({ type: types.GET_BULB_SUCCESS, payload: data });
-    // console.log("bulb", data);
+    console.log("bulb", data);
+    dispatch({ type: types.GET_BULB_SUCCESS, payload: data?.data });
   } catch (err) {
     // console.log(err)
     dispatch({ type: types.GET_BULB_ERROR });

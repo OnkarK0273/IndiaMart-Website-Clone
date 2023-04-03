@@ -14,12 +14,16 @@ machineRouter.get("/",auth, async (req, res) => {
   // console.log("decoded", decoded);
 
   try {
-    if (decoded) {
+    if (decoded.role==="user") {
       const machines = await MachineModel.find({ userID: decoded.userID });
       // const machines = await MachineModel.find();
-      console.log(machines[0].userID);
+      // console.log(machines[0].userID);
 
-      res.status(200).send(machines);
+      res.status(200).send({data:machines});
+    }else{
+      const machines = await MachineModel.find();
+       res.status(200).send({data:machines});
+
     }
   } catch (err) {
     res.status(400).send({ msg: err.message });

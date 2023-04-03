@@ -3,17 +3,17 @@
 import * as types from "./admin.action.type"
 import { deleteAdminDataAPI, deleteProductAPI, getAdminsDataAPI, getPlywoodAPI, getUsersDataAPI, postAdminDataAPI, postProductAPI, updateAdminDataAPI, updateProductAPI } from "./admin.api"
 
-export const getPlywoodProducts =(color,Page,limit)=>async (dispatch)=>{
+export const getPlywoodProducts =(color,Page,limit,order,price)=>async (dispatch)=>{
     console.log(color,Page,limit)
      
     dispatch({type:types.GET_PRODUCT_LOADING})
     
     try {
-            let data = await getPlywoodAPI(color,Page,limit)
+            let data = await getPlywoodAPI(color,Page,limit,order,price)
     
             dispatch({type:types.GET_PRODUCT_SUCCESS,payload:data})
         // }
-        console.log("data",data)
+        // console.log("data",data)
     } catch (err) {
         dispatch({type:types.GET_PRODUCT_ERROR})
     }
