@@ -20,10 +20,16 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PlywoodCard from "./PlywoodCard";
 import { MdAddBox } from "react-icons/md";
+import {
+  addPlywoods,
+  getPlywoods,
+  patchPlywoods,
+} from "../../../redux/sell/sell.action";
 export default function PlywoodPanal() {
   const { plyWoods } = useSelector((store) => store.sellReducer);
   const { token } = useSelector((store) => store.authReducer);
   const dispatch = useDispatch();
+  const [id, setId] = useState("");
   const [title, settitle] = useState("");
   const [price, setprice] = useState(0);
   const [quan, setquan] = useState("");
@@ -37,53 +43,128 @@ export default function PlywoodPanal() {
   const [mob, setmob] = useState(0);
   const [img1, setimg1] = useState("");
   const [img2, setimg2] = useState("");
-  const [flag,setFlag] = useState(false)
+  const [flag, setFlag] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const setDetails = (title,price,quan,size,Color,UsageApplication,Thickness,Brand,supplier,supplier_Addres,mob,img1,img2) => {
-    settitle(title)
-    setprice(price)
-    setquan(quan)
-    setsize(size)
-    setColor(Color)
-    setUsageApplication(UsageApplication)
-    setThickness(Thickness)
-    setBrand(Brand)
-    setsupplier(supplier)
-    setsupplier_Addres(supplier_Addres)
-    setmob(mob)
-    setimg1(img1)
-    setimg2(img2)
-    setFlag(true)
-    onOpen()
+  const setDetails = (
+    title,
+    price,
+    quan,
+    size,
+    Color,
+    UsageApplication,
+    Thickness,
+    Brand,
+    supplier,
+    supplier_Addres,
+    mob,
+    img1,
+    img2,
+    id
+  ) => {
+    settitle(title);
+    setprice(price);
+    setquan(quan);
+    setsize(size);
+    setColor(Color);
+    setUsageApplication(UsageApplication);
+    setThickness(Thickness);
+    setBrand(Brand);
+    setsupplier(supplier);
+    setsupplier_Addres(supplier_Addres);
+    setmob(mob);
+    setimg1(img1);
+    setimg2(img2);
+    setId(id);
+    setFlag(true);
+    onOpen();
   };
 
-  const addDetails = ()=>{
-    settitle("")
-    setprice(0)
-    setquan("")
-    setsize("")
-    setColor("")
-    setUsageApplication("")
-    setThickness("")
-    setBrand("")
-    setsupplier("")
-    setsupplier_Addres("")
-    setmob(0)
-    setimg1("")
-    setimg2("")
-    setFlag(false)
-    onOpen()
+  const addDetails = () => {
+    settitle("");
+    setprice(0);
+    setquan("");
+    setsize("");
+    setColor("");
+    setUsageApplication("");
+    setThickness("");
+    setBrand("");
+    setsupplier("");
+    setsupplier_Addres("");
+    setmob(0);
+    setimg1("");
+    setimg2("");
+    setFlag(false);
+    onOpen();
+  };
 
-  }
+  const handleAdd = () => {
+    const payload = {
+      title,
+      price,
+      quan,
+      size,
+      Color,
+      UsageApplication,
+      Thickness,
+      Brand,
+      supplier,
+      supplier_Addres,
+      contact: "Contact Supplier",
+      mob,
+      img1,
+      img2,
+    };
 
-  useEffect(() => {}, []);
+    const headers = {
+      "Content-Type": "application/json",
+      token: token, // replace token with your actual token value
+    };
+
+    dispatch(addPlywoods(payload, headers)).then(() => {
+      dispatch(getPlywoods(headers));
+    });
+
+    onClose();
+  };
+
+  const handleUpdate = () => {
+    const payload = {
+      title,
+      price,
+      quan,
+      size,
+      Color,
+      UsageApplication,
+      Thickness,
+      Brand,
+      supplier,
+      supplier_Addres,
+      mob,
+      img1,
+      img2,
+      
+    };
+
+    const headers = {
+      "Content-Type": "application/json",
+      token: token, // replace token with your actual token value // replace token with your actual token value
+    };
+
+    dispatch(patchPlywoods(payload, id, headers)).then(() => {
+      dispatch(getPlywoods(headers));
+    });
+
+    onClose();
+  };
+
+  
   return (
     <Box>
       {/* Add btn */}
       <Box>
         <Flex justifyContent={"end"} alignItems={"right"} mr="1rem">
-          <Button p="10px" onClick={addDetails} >
+          <Button p="10px" onClick={addDetails}>
             <Icon as={MdAddBox} boxSize={6} />
             <Text>Add Product</Text>
           </Button>
@@ -111,7 +192,7 @@ export default function PlywoodPanal() {
                 type="text"
                 name="title"
                 value={title}
-                onChange={(e)=>settitle(e.target.value)}
+                onChange={(e) => settitle(e.target.value)}
               />
             </FormControl>
             <FormControl>
@@ -120,7 +201,7 @@ export default function PlywoodPanal() {
                 type="Number"
                 name="price"
                 value={price}
-                onChange={(e)=>setprice(e.target.value)}
+                onChange={(e) => setprice(e.target.value)}
               />
             </FormControl>
             <FormControl>
@@ -129,7 +210,7 @@ export default function PlywoodPanal() {
                 type="text"
                 name="quan"
                 value={quan}
-                onChange={(e)=>setquan(e.target.value)}
+                onChange={(e) => setquan(e.target.value)}
               />
             </FormControl>
             <FormControl>
@@ -138,7 +219,7 @@ export default function PlywoodPanal() {
                 type="text"
                 name="size"
                 value={size}
-                onChange={(e)=>setsize(e.target.value)}
+                onChange={(e) => setsize(e.target.value)}
               />
             </FormControl>
             <FormControl>
@@ -147,7 +228,7 @@ export default function PlywoodPanal() {
                 type="text"
                 name="Color"
                 value={Color}
-                onChange={(e)=>setColor(e.target.value)}
+                onChange={(e) => setColor(e.target.value)}
               />
             </FormControl>
             {/* <FormControl>
@@ -165,7 +246,7 @@ export default function PlywoodPanal() {
                 type="text"
                 name="UsageApplication"
                 value={UsageApplication}
-                onChange={(e)=>setUsageApplication(e.target.value)}
+                onChange={(e) => setUsageApplication(e.target.value)}
               />
             </FormControl>
             <FormControl>
@@ -174,7 +255,7 @@ export default function PlywoodPanal() {
                 type="Number"
                 name="Thickness"
                 value={Thickness}
-                onChange={(e)=>setThickness(e.target.value)}
+                onChange={(e) => setThickness(e.target.value)}
               />
             </FormControl>
             <FormControl>
@@ -183,7 +264,7 @@ export default function PlywoodPanal() {
                 type="text"
                 name="Brand"
                 value={Brand}
-                onChange={(e)=>setBrand(e.target.value)}
+                onChange={(e) => setBrand(e.target.value)}
               />
             </FormControl>
             <FormControl>
@@ -192,7 +273,7 @@ export default function PlywoodPanal() {
                 type="text"
                 name="supplier"
                 value={supplier}
-                onChange={(e)=>setsupplier(e.target.value)}
+                onChange={(e) => setsupplier(e.target.value)}
               />
             </FormControl>
             <FormControl>
@@ -201,7 +282,7 @@ export default function PlywoodPanal() {
                 type="text"
                 name="supplier_Addres"
                 value={supplier_Addres}
-                onChange={(e)=>setsupplier_Addres(e.target.value)}
+                onChange={(e) => setsupplier_Addres(e.target.value)}
               />
             </FormControl>
             <FormControl>
@@ -210,7 +291,7 @@ export default function PlywoodPanal() {
                 type="Number"
                 name="mob"
                 value={mob}
-                onChange={(e)=>setmob(e.target.value)}
+                onChange={(e) => setmob(e.target.value)}
               />
             </FormControl>
 
@@ -220,7 +301,7 @@ export default function PlywoodPanal() {
                 type="text"
                 name="img1"
                 value={img1}
-                onChange={(e)=>setimg1(e.target.value)}
+                onChange={(e) => setimg1(e.target.value)}
               />
             </FormControl>
             <FormControl>
@@ -229,7 +310,7 @@ export default function PlywoodPanal() {
                 type="text"
                 name="img2"
                 value={img2}
-                onChange={(e)=>setimg2(e.target.value)}
+                onChange={(e) => setimg2(e.target.value)}
               />
             </FormControl>
           </Box>
@@ -238,19 +319,21 @@ export default function PlywoodPanal() {
             <Button colorScheme="blue" mr={3} onClick={onClose}>
               Close
             </Button>
-            {
-                flag?<Button
+            {flag ? (
+              <Button
                 variant="ghost"
-                //  onClick={() => handleSubmit()}
-                >
+                 onClick={handleUpdate}
+              >
                 Update
-                </Button>:<Button
+              </Button>
+            ) : (
+              <Button
                 variant="ghost"
-              //  onClick={() => handleSubmit()}
-                >
+                onClick={handleAdd}
+              >
                 Add
-                </Button>
-            }
+              </Button>
+            )}
           </ModalFooter>
         </ModalContent>
       </Modal>

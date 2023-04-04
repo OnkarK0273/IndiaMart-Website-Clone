@@ -107,7 +107,7 @@ export const deleteBulbsAPI =async (id,headers)=>{
 
 }
 
-export const deletePlywoodAPI =async (payload,id,headers)=>{
+export const deletePlywoodAPI =async (id,headers)=>{
 
     const res = await axios.delete(`${baseURL}plywood/delete/${id}`,{headers})
     return res.data
@@ -115,14 +115,14 @@ export const deletePlywoodAPI =async (payload,id,headers)=>{
 }
 
 
-export const deleteMachinsAPI =async (payload,id,headers)=>{
+export const deleteMachinsAPI =async (id,headers)=>{
 
     const res = await axios.delete(`${baseURL}machines/delete/${id}`,{headers})
     return res.data
 
 }
 
-export const deleteMedicineAPI =async (payload,id,headers)=>{
+export const deleteMedicineAPI =async (id,headers)=>{
 
     const res = await axios.delete(`${baseURL}plywood/delete/${id}`,{headers})
     return res.data
