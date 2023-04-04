@@ -1,4 +1,3 @@
-
 import {
     Button,
     Center,
@@ -8,27 +7,22 @@ import {
     Stack,
     Text,
     useColorModeValue,
-  
   } from "@chakra-ui/react";
 import { useState,useEffect } from "react";
 import { useDispatch,useSelector } from "react-redux";
 import {  getBulbs,deleteBulbs } from '../../../redux/sell/sell.action'
-  // import { deleteProductProduct } from "../redux/Admin/admin.action";
+
   
   export default function BulbsCard({ product, setDetails }) {
     const [id,setId] = useState('')
-   
-    const {bulbs, isAdd,isPatch} = useSelector((store)=>store.sellReducer)
     const {token} = useSelector((store)=>store.authReducer)
     const dispatch = useDispatch()
-    const {
-      _id,
-      title,price,Wattage,application,Thickness,Brand,supplier,supplier_Addres,mob,img1,img2
-    } = product;
+
+    const { _id,title,price,Wattage,application,Thickness,Brand,supplier,supplier_Addres,mob,img1,img2 } = product;
   
     const handleDelete = ()=>{
+
       const headers = {
-        
         'Content-Type': 'application/json',
         token:token // replace token with your actual token value// replace token with your actual token value
       }
