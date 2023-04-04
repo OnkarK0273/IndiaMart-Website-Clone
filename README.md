@@ -18,7 +18,6 @@ This project was built using the following technologies:
 ## Completed By 5 developers in five days
 
  - Onkar Kalsannawar
- - Suman Biswas
  - Prince Sharma
  - Akash Rajendra Fulari
  - Papri Saha
