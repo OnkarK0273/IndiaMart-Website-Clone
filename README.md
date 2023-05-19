@@ -40,6 +40,8 @@ This project was built using the following technologies:
 
 ~ CRUD operations by Admin, as well as Users
 
+~ Filters on PLywood page (Admin Side)
+
 ## Tech Stack
 
 HTML | CSS | JavaScript | ReactJS | React | DOM | ChakraUI | Express | MongoDB | Nodemon 
